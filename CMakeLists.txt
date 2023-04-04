@@ -31,8 +31,8 @@ if(TARGET tinyusb_device)
     pico_set_program_name(poleFirmware "poleFirmware")
     pico_set_program_version(poleFirmware "0.1")
 
-    pico_enable_stdio_uart(poleFirmware 1)
-    pico_enable_stdio_usb(poleFirmware 0)
+    pico_enable_stdio_uart(poleFirmware 0)
+    pico_enable_stdio_usb(poleFirmware 1)
 
     # Add the standard library to the build
     target_link_libraries(poleFirmware 
