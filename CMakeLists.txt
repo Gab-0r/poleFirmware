@@ -9,8 +9,14 @@ set(CMAKE_CXX_STANDARD 17)
 # (note this can come from environment, CMake cache etc)
 set(PICO_SDK_PATH "C:/Users/j_gab/Documents/Pico/pico-sdk")
 
+#Intialise freeRTOS-Kernel from installed location
+set(FREERTOS_KERNEL_PATH "C:/Users/j_gab/Documents/Pico/FreeRTOS-Kernel")
+
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
+
+#Pull in FreeRTOS-Kernel
+include(FreeRTOS_Kernel_import.cmake)
 
 project(poleFirmware C CXX ASM)
 
@@ -18,17 +24,26 @@ project(poleFirmware C CXX ASM)
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
+if(TARGET tinyusb_device)
+    add_executable(poleFirmware poleFirmware.cpp )
+    target_include_directories(poleFirmware PUBLIC ./)
 
-add_executable(poleFirmware poleFirmware.cpp )
+    pico_set_program_name(poleFirmware "poleFirmware")
+    pico_set_program_version(poleFirmware "0.1")
 
-pico_set_program_name(poleFirmware "poleFirmware")
-pico_set_program_version(poleFirmware "0.1")
+    pico_enable_stdio_uart(poleFirmware 1)
+    pico_enable_stdio_usb(poleFirmware 0)
 
-pico_enable_stdio_uart(poleFirmware 1)
-pico_enable_stdio_usb(poleFirmware 0)
+    # Add the standard library to the build
+    target_link_libraries(poleFirmware 
+        pico_stdlib
+        FreeRTOS-Kernel
+        FreeRTOS-Kernel-Heap4
+    )
 
-# Add the standard library to the build
-target_link_libraries(poleFirmware pico_stdlib)
+    pico_add_extra_outputs(poleFirmware)
 
-pico_add_extra_outputs(poleFirmware)
+    elseif(PICO_ON_DEVICE)
+        message(WARNING "Not building hello_usb because TinyUSB submodule is not initialized in the SDK")
+    endif()
 
