@@ -29,9 +29,9 @@ void readEnviromentSensorsTask(void *pvParameters); //Task to read the board wit
 void readOnBoardSensorsTask(void *pvParameters);    //Task to read the onboard sensors (Current, voltage and light)
 void readEdgeBoardsTask(void *pvParameters);        //Task to read the edge computing boards events and states
 void lightManagerTask(void *pvParameters);          //Task to manage the light
-void packetManagerTask(void *pvParameters);         //Task to receive the values and create the packets
-void supplyManagerTask(void *pvParameters);         //
-void comManagerTask(void *pvParameters);
+void packetManagerTask(void *pvParameters);         //Task to receive the values from the other task and create the telemetry packets
+void supplyManagerTask(void *pvParameters);         //Task to manage the power supplies
+void comManagerTask(void *pvParameters);            //Tas to manage the communication module
 
 int main()
 {
