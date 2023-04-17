@@ -4,7 +4,7 @@
 #include "pico/stdlib.h"
 #include "timers.h"
 #include "event_groups.h"
-
+#include "pico/time.h"
 
 #define PERIOD_TRIGGER_TASK 5000UL          //Period to launch the next measurement stage
 
@@ -20,6 +20,32 @@
 #define PACKET_MANAGER_TASK_TRIGGER3                    (1UL << 8UL) 
 #define COM_MANAGER_TASK_TRIGGER                        (1UL << 9UL)
 
+/***************************************************/
+/*                 System parameters               */
+/***************************************************/
+#define PIR_PULSE_DURATION      (uint32_t)10000U
+
+
+/***************************************************/
+/*    Section related to pico pins and hardware    */
+/***************************************************/
+
+/* Pico pins */
+#define PIR_SENSOR_PIN  (uint16_t)15U
+
+
+void hardwareInit();
+void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/);
+
+bool isPirTriggered = false;
+int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
+alarm_id_t pirAlarmId = 0;
+
+
+/***************************************************/
+/*           Section related to freeRTOS           */
+/***************************************************/
+
 /* Create an event group*/
 EventGroupHandle_t xEventGroup;
 
@@ -33,9 +59,11 @@ void packetManagerTask(void *pvParameters);         //Task to receive the values
 void supplyManagerTask(void *pvParameters);         //Task to manage the power supplies
 void comManagerTask(void *pvParameters);            //Tas to manage the communication module
 
+
 int main()
 {
-    stdio_init_all();
+    hardwareInit();
+    
 
     xTaskCreate(periodicTriggerTask, "PeriodicTrigger", 1000, NULL, 1, NULL);
     xTaskCreate(readEnviromentSensorsTask, "ReadEnvSensors", 1000, NULL, 2, NULL);
@@ -52,6 +80,41 @@ int main()
 
     while(1){};
 }
+
+void hardwareInit(){
+
+    stdio_init_all();
+
+    /* Pins declaration */
+    gpio_init(PICO_DEFAULT_LED_PIN);
+    gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
+
+    /* Pins with IRQ */
+    //gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_FALL, true, &pirOff);
+    gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
+}
+
+void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
+    printf("Movimiento detectado\r\n");
+    gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    isPirTriggered = true;
+    if (pirAlarmId == 0)
+    {
+        pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+    }
+    else{
+        cancel_alarm(pirAlarmId);
+        pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+    }
+}
+
+int64_t pirOff(alarm_id_t id, void* user_data){
+    printf("Sin movimiento\r\n");
+    isPirTriggered = false;
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    return 0;
+}
+
 
 void periodicTriggerTask(void *pvParameters){
     const TickType_t xDelayTrigger = pdMS_TO_TICKS(PERIOD_TRIGGER_TASK), xDontBLock = 0;

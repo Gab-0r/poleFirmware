@@ -39,6 +39,7 @@ if(TARGET tinyusb_device)
         pico_stdlib
         FreeRTOS-Kernel
         FreeRTOS-Kernel-Heap4
+        pico_time
     )
 
     pico_add_extra_outputs(poleFirmware)
