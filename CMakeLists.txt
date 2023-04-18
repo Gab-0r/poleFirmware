@@ -23,6 +23,9 @@ project(poleFirmware C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
+# Adding subdirectories
+add_subdirectory(lightManager)
+
 # Add executable. Default name is the project name, version 0.1
 if(TARGET tinyusb_device)
     add_executable(poleFirmware poleFirmware.cpp )
@@ -40,6 +43,7 @@ if(TARGET tinyusb_device)
         FreeRTOS-Kernel
         FreeRTOS-Kernel-Heap4
         pico_time
+        lightManager
     )
 
     pico_add_extra_outputs(poleFirmware)

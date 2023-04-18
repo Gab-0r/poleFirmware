@@ -5,6 +5,7 @@
 #include "timers.h"
 #include "event_groups.h"
 #include "pico/time.h"
+#include "lightManager.h"
 
 #define PERIOD_TRIGGER_TASK 5000UL          //Period to launch the next measurement stage
 
