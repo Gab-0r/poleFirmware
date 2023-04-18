@@ -101,10 +101,12 @@ void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
     if (pirAlarmId == 0)
     {
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        //TODO: Set event bits to trigger light manager task
     }
     else{
         cancel_alarm(pirAlarmId);
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        //TODO: Set event bits to trigger light manager task
     }
 }
 
