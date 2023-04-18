@@ -7,8 +7,6 @@
 #include "pico/time.h"
 #include "lightManager.h"
 
-#define PERIOD_TRIGGER_TASK 5000UL          //Period to launch the next measurement stage
-
 /* Bits to trigger tasks */
 #define READ_ENVIROMENT_SENSORS_TASKS_TRIGGER           (1UL << 0UL)
 #define READ_ONBOARD_SENSORS_TASKS_TRIGGER              (1UL << 1UL)
@@ -24,7 +22,8 @@
 /***************************************************/
 /*                 System parameters               */
 /***************************************************/
-#define PIR_PULSE_DURATION      (uint32_t)10000U
+#define PERIOD_TRIGGER_TASK 5000UL          //Period to launch the next measurement stage
+#define PIR_PULSE_DURATION  (uint32_t)10000U
 
 
 /***************************************************/
@@ -97,28 +96,27 @@ void hardwareInit(){
 }
 
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
-    printf("Movimiento detectado\r\n");
-    gpio_put(PICO_DEFAULT_LED_PIN, 1);
-    //isPirTriggered = true;
+
+    BaseType_t xHigherPriorityTaskWoken, xResult;
+    //printf("Movimiento detectado\r\n");
+    //gpio_put(PICO_DEFAULT_LED_PIN, 1);
     if (pirAlarmId == 0)
     {   
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
-        //light_manager.setPWM(1,true);
-        //TODO: Set event bits to trigger light manager task
+        xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     }
     else{
         cancel_alarm(pirAlarmId);
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
-        //light_manager.setPWM(1,true);
-        //TODO: Set event bits to trigger light manager task
+        xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     }
 }
 
 int64_t pirOff(alarm_id_t id, void* user_data){
-    printf("Sin movimiento\r\n");
-    //isPirTriggered = false;
-    light_manager.setPWM(1, false);
-    gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    BaseType_t xHigherPriorityTaskWoken, xResult;
+    xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
+    //printf("Sin movimiento\r\n");
+    //gpio_put(PICO_DEFAULT_LED_PIN, 0);
     return 0;
 }
 
