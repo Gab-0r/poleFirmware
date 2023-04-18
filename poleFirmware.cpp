@@ -42,6 +42,8 @@ bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
 alarm_id_t pirAlarmId = 0;
 
+lightManager light_manager;
+
 
 /***************************************************/
 /*           Section related to freeRTOS           */
@@ -91,29 +93,31 @@ void hardwareInit(){
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 
     /* Pins with IRQ */
-    //gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_FALL, true, &pirOff);
     gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
 }
 
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
     printf("Movimiento detectado\r\n");
     gpio_put(PICO_DEFAULT_LED_PIN, 1);
-    isPirTriggered = true;
+    //isPirTriggered = true;
     if (pirAlarmId == 0)
-    {
+    {   
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        //light_manager.setPWM(1,true);
         //TODO: Set event bits to trigger light manager task
     }
     else{
         cancel_alarm(pirAlarmId);
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        //light_manager.setPWM(1,true);
         //TODO: Set event bits to trigger light manager task
     }
 }
 
 int64_t pirOff(alarm_id_t id, void* user_data){
     printf("Sin movimiento\r\n");
-    isPirTriggered = false;
+    //isPirTriggered = false;
+    light_manager.setPWM(1, false);
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
     return 0;
 }
