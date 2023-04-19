@@ -15,4 +15,5 @@ target_include_directories(lightManager
 target_link_libraries(lightManager
         INTERFACE
             pico_stdlib
+            hardware_pwm
 )

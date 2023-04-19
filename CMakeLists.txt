@@ -43,6 +43,7 @@ if(TARGET tinyusb_device)
         FreeRTOS-Kernel
         FreeRTOS-Kernel-Heap4
         pico_time
+        hardware_pwm
         lightManager
     )
 

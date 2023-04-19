@@ -6,6 +6,7 @@
 #include "event_groups.h"
 #include "pico/time.h"
 #include "lightManager.h"
+#include "hardware/pwm.h"
 
 /* Bits to trigger tasks */
 #define READ_ENVIROMENT_SENSORS_TASKS_TRIGGER           (1UL << 0UL)
@@ -32,6 +33,7 @@
 
 /* Pico pins */
 #define PIR_SENSOR_PIN  (uint16_t)15U
+#define LED_CTRL_PIN    (uint16_t)7U
 
 
 void hardwareInit();
@@ -41,7 +43,7 @@ bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
 alarm_id_t pirAlarmId = 0;
 
-lightManager light_manager;
+lightManager light_manager(LED_CTRL_PIN);
 
 
 /***************************************************/
@@ -100,6 +102,7 @@ void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
     BaseType_t xHigherPriorityTaskWoken, xResult;
     //printf("Movimiento detectado\r\n");
     //gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    isPirTriggered = true;
     if (pirAlarmId == 0)
     {   
         pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
@@ -115,8 +118,9 @@ void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
 int64_t pirOff(alarm_id_t id, void* user_data){
     BaseType_t xHigherPriorityTaskWoken, xResult;
     xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
+    isPirTriggered = false;
     //printf("Sin movimiento\r\n");
-    //gpio_put(PICO_DEFAULT_LED_PIN, 0);
+    gpio_put(PICO_DEFAULT_LED_PIN, 0);
     return 0;
 }
 
@@ -190,6 +194,16 @@ void lightManagerTask(void *pvParameters){
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
         printf("<---- LIGHT MANAGER TRIGGERED ---->\r\n");
+
+        if(isPirTriggered){
+            printf("Aumentando duty\r\n");
+            light_manager.setPWM(1, (uint16_t)99*4167/100); //TODO: Create a parameter for bright levels
+        }
+        else{
+            light_manager.setPWM(1, (uint16_t)20*4167/100); //TODO: Create a parameter for bright levels
+        }
+
+
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER1);
     }
 }
