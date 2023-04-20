@@ -7,6 +7,7 @@
 #include "pico/time.h"
 #include "lightManager.h"
 #include "hardware/pwm.h"
+#include "smartPoleConfig.h"
 
 /* Bits to trigger tasks */
 #define READ_ENVIROMENT_SENSORS_TASKS_TRIGGER           (1UL << 0UL)
@@ -19,12 +20,6 @@
 #define PACKET_MANAGER_TASK_TRIGGER2                    (1UL << 7UL) 
 #define PACKET_MANAGER_TASK_TRIGGER3                    (1UL << 8UL) 
 #define COM_MANAGER_TASK_TRIGGER                        (1UL << 9UL)
-
-/***************************************************/
-/*                 System parameters               */
-/***************************************************/
-#define PERIOD_TRIGGER_TASK 5000UL          //Period to launch the next measurement stage
-#define PIR_PULSE_DURATION  (uint32_t)10000U
 
 
 /***************************************************/
@@ -95,6 +90,7 @@ void hardwareInit(){
 
     /* Pins with IRQ */
     gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
+
 }
 
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
@@ -105,12 +101,12 @@ void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
     isPirTriggered = true;
     if (pirAlarmId == 0)
     {   
-        pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        pirAlarmId =  add_alarm_in_ms(MAX_BRIGHT_TIME, pirOff, NULL, true);
         xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     }
     else{
         cancel_alarm(pirAlarmId);
-        pirAlarmId =  add_alarm_in_ms(PIR_PULSE_DURATION, pirOff, NULL, true);
+        pirAlarmId =  add_alarm_in_ms(MAX_BRIGHT_TIME, pirOff, NULL, true);
         xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     }
 }
@@ -197,10 +193,10 @@ void lightManagerTask(void *pvParameters){
 
         if(isPirTriggered){
             printf("Aumentando duty\r\n");
-            light_manager.setPWM(1, (uint16_t)99*4167/100); //TODO: Create a parameter for bright levels
+            light_manager.setPWM(MOVEMENT_DETECTED);
         }
         else{
-            light_manager.setPWM(1, (uint16_t)20*4167/100); //TODO: Create a parameter for bright levels
+            light_manager.setPWM(NO_MOVEMENT);
         }
 
 
