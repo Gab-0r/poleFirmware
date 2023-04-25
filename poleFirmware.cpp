@@ -40,6 +40,7 @@
 
 void hardwareInit();
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/);
+void OSinit();
 
 bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
@@ -68,20 +69,13 @@ void comManagerTask(void *pvParameters);            //Tas to manage the communic
 
 int main()
 {
+    /* Initialize the RPPico hardware */
     hardwareInit();
-    
 
-    xTaskCreate(periodicTriggerTask, "PeriodicTrigger", 1000, NULL, 1, NULL);
-    xTaskCreate(readEnviromentSensorsTask, "ReadEnvSensors", 1000, NULL, 2, NULL);
-    xTaskCreate(readOnBoardSensorsTask, "ReadOnBoard", 1000, NULL, 2, NULL);
-    xTaskCreate(readEdgeBoardsTask, "ReadEdge", 1000, NULL, 2, NULL);
-    xTaskCreate(lightManagerTask, "LighManage", 1000, NULL, 2, NULL);
-    xTaskCreate(supplyManagerTask, "SupplyManage", 1000, NULL, 2, NULL);
-    xTaskCreate(packetManagerTask, "PacketManage", 1000, NULL, 2, NULL);
-    xTaskCreate(comManagerTask, "COMManage", 1000, NULL, 2, NULL);
+    /* Iniziale the OS */
+    OSinit();
 
-    xEventGroup = xEventGroupCreate();
-
+    /* Initialize scheduler */
     vTaskStartScheduler();
 
     while(1){};
@@ -97,6 +91,23 @@ void hardwareInit(){
 
     /* Pins with IRQ */
     gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
+
+}
+
+void OSinit(){
+
+    /* Create tasks */
+    xTaskCreate(periodicTriggerTask, "PeriodicTrigger", 1000, NULL, 1, NULL);
+    xTaskCreate(readEnviromentSensorsTask, "ReadEnvSensors", 1000, NULL, 2, NULL);
+    xTaskCreate(readOnBoardSensorsTask, "ReadOnBoard", 1000, NULL, 2, NULL);
+    xTaskCreate(readEdgeBoardsTask, "ReadEdge", 1000, NULL, 2, NULL);
+    xTaskCreate(lightManagerTask, "LighManage", 1000, NULL, 2, NULL);
+    xTaskCreate(supplyManagerTask, "SupplyManage", 1000, NULL, 2, NULL);
+    xTaskCreate(packetManagerTask, "PacketManage", 1000, NULL, 2, NULL);
+    xTaskCreate(comManagerTask, "COMManage", 1000, NULL, 2, NULL);
+
+    /* Create event groups*/
+    xEventGroup = xEventGroupCreate();
 
 }
 

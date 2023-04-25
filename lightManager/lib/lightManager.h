@@ -41,31 +41,29 @@ class lightManager{
 
     public:
 
-        /* Class constructor
-        *   Parameters: 
-        *       - pwmPin_: The lighting control pin for the lamp */
+        /*! \brief Class constructor 
+        *   \param pwmPin_ The lighting control pin for the lamp */
         lightManager(uint16_t pwmPin_);
 
-        /* Function that determines if the lighting levels are correct for the current PWM duty cycle 
-        *   Parameters:
-        *       - measuredLight: light levels given by the lamp
-        *   Return:
-                - Lamp operation state */
+        /*! \brief Determine if the lighting levels are correct for the current PWM duty cycle
+         *  
+         *  \param measuredLight Light levels given by the lamp
+         *  \return Lamp operation state
+         * 
+        */
         uint8_t lightFeedBackCheck(uint32_t measuredLight);
 
-        /* Function that initialize the PWM with parameters specified in the smarPoleConfig file */
+        /*! \brief Initialize the PWM with parameters specified in the smarPoleConfig file */
         void initPWM();
 
-        /* Function that changes the PWM duty cycle based on an event 
-        *   Parameters:
-        *       - event
+        /*! \brief Change the PWM duty cycle based on an event 
+         *  \param event Event detected
         */
         void setPWM(uint8_t event);
 
-        /* Function that receives an operation mode and change the maximun and minimun light levels
+        /*! \brief Receive an operation mode and change the maximun and minimun light levels
         * for the operation mode. This levels are defined in the smartPoleConfig file
-        *   Parameters:
-        *       - OP: Operation mode
+        *   \param OP Operation mode
         */
         void setOperationMode(uint8_t OP);
         
