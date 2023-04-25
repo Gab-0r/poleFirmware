@@ -1,10 +1,19 @@
+/**
+ * Light Manager Class
+ * By Juan Gabriel Orozco Orozco - 2023
+ * 
+ * This class manages the light levels based on a given event, given
+ * order or a mode operation of the system. The light levels are controlled by
+ * a PWM pin that is specfied when the class is instantiate. This file contains the
+ * functiona implementations for the class.
+ */
+
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "lightManager.h"
 #include "hardware/pwm.h"
 #include "smartPoleConfig.h"
 
-//TODO: Comment this file
 
 lightManager::lightManager(uint16_t pwmPin_){
     setOperationMode(NORMAL_OPERATION);
@@ -12,7 +21,7 @@ lightManager::lightManager(uint16_t pwmPin_){
     initPWM();
 }
 
-uint8_t lightManager::lightFeedBackCheck(uint32_t measuredLight, uint32_t expectedLight){
+uint8_t lightManager::lightFeedBackCheck(uint32_t measuredLight){
     //TODO: Function implementation
     return 0;
 }
@@ -35,9 +44,6 @@ void lightManager::setPWM(uint8_t event){
             pwm_set_enabled(pwmSlice, true);    
         break;
     }
-
-
- 
 }
 
 void lightManager::setOperationMode(uint8_t OP){
@@ -53,7 +59,7 @@ void lightManager::setOperationMode(uint8_t OP){
             pwmMinBrightLevel = MIN_BRIGHT_ENERGY_SAVING_DUTY*LAMP_PWM_WRAP/100;
         break;
 
-    case EMERGENCY_OPEARTION:
+    case EMERGENCY_OPERATION:
             pwmMaxBrightLevel = MAX_BRIGHT_EMERGENCY_DUTY*LAMP_PWM_WRAP/100;
             pwmMinBrightLevel = MIN_BRIGHT_EMERGENCY_DUTY*LAMP_PWM_WRAP/100;
         break;

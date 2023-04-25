@@ -1,5 +1,5 @@
 
-#TODO: comment this file
+
 cmake_minimum_required(VERSION 3.13)
 
 include($ENV{PICO_SDK_PATH}/external/pico_sdk_import.cmake)
@@ -14,4 +14,5 @@ pico_sdk_init()
 
 add_compile_options(-Wall -Wno-unused-function)
 
+#Adding subdirectory lib
 add_subdirectory(lib)

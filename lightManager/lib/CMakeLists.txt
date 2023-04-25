@@ -1,5 +1,5 @@
-#TODO: comment this file
 
+#Create library as INTERFACE
 add_library(lightManager INTERFACE)
 
 target_sources(lightManager
@@ -12,6 +12,7 @@ target_include_directories(lightManager
             ${CMAKE_CURRENT_LIST_DIR}
 )
 
+#Inlcuding libraries
 target_link_libraries(lightManager
         INTERFACE
             pico_stdlib

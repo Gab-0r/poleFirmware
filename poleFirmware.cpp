@@ -1,3 +1,10 @@
+/**
+ * Smart pole firmware
+ * By Juan Gabriel Orozco Orozco - 2023
+ * 
+ * Description.....
+ */
+
 #include <FreeRTOS.h>
 #include <task.h>
 #include <stdio.h>
