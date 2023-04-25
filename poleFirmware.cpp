@@ -138,7 +138,6 @@ int64_t pirOff(alarm_id_t id, void* user_data){
     return 0;
 }
 
-
 void periodicTriggerTask(void *pvParameters){
     const TickType_t xDelayTrigger = pdMS_TO_TICKS(PERIOD_TRIGGER_TASK), xDontBLock = 0;
     while (true)
