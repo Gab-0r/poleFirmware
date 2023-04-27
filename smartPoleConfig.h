@@ -1,10 +1,18 @@
 /***************************************************/
+/*                   System pins                   */
+/***************************************************/
+#define PIR_SENSOR_PIN          (uint16_t)15U
+#define LED_CTRL_PIN            (uint16_t)7U
+#define GRID_SUPPLY_RELAY       (uint16_t)22U
+#define BATTERY_SUPPLY_RELAY    (uint16_t)21U
+#define SOLAR_SUPPLY_RELAY      (uint16_t)20U
+
+/***************************************************/
 /*                 System parameters               */
 /***************************************************/
 
-
-/* Period to launch the next measurement stage */
-#define PERIOD_TRIGGER_TASK 5000UL
+/* Period to launch the next measurement stage in ms*/
+#define PERIOD_TRIGGER_TASK 10000UL
 /* Time in ms until the lamp decreases the bright after no detect movement */
 #define MAX_BRIGHT_TIME  (uint32_t)10000U
 /* Duty cycle (0 - 100) for max bright, i.e when movement is detected*/
@@ -23,6 +31,9 @@
 #define LAMP_PWM_FREQUENCY 30000U
 /* PWM wrap*/
 #define LAMP_PWM_WRAP 4167U
+/* Time in ms until the relay release the contact */
+#define RELAY_RELEASE_TIME  1000UL
+
 
 
 /***************************************************/
@@ -38,10 +49,17 @@ enum OP_MODE
     EMERGENCY_OPERATION
 };
 
-/* Events */
+/* Sensors Events */
 enum SENS_EVENTS
 {
     MOVEMENT_DETECTED,
     NO_MOVEMENT
 };
 
+/* Power events*/
+enum POWER_EVENTS{
+    CLOSE_RELAY,
+    RELEASE_RELAY,
+    LOW_POWER,
+    NO_POWER
+};

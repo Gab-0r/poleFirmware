@@ -25,6 +25,7 @@ pico_sdk_init()
 
 # Adding subdirectories
 add_subdirectory(lightManager)
+add_subdirectory(supplyManager)
 
 # Add executable. Default name is the project name, version 0.1
 if(TARGET tinyusb_device)
@@ -45,6 +46,7 @@ if(TARGET tinyusb_device)
         pico_time
         hardware_pwm
         lightManager
+        supplyManager
     )
 
     pico_add_extra_outputs(poleFirmware)

@@ -13,7 +13,7 @@
 #include "event_groups.h"
 #include "pico/time.h"
 #include "lightManager.h"
-#include "hardware/pwm.h"
+#include "supplyManager.h"
 #include "smartPoleConfig.h"
 
 /* Bits to trigger tasks */
@@ -30,23 +30,21 @@
 
 
 /***************************************************/
-/*    Section related to pico pins and hardware    */
+/*                                                 */
 /***************************************************/
-
-/* Pico pins */
-#define PIR_SENSOR_PIN  (uint16_t)15U
-#define LED_CTRL_PIN    (uint16_t)7U
-
-
 void hardwareInit();
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/);
+//TODO: Definir ISR de los sensores de corriente
 void OSinit();
 
 bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
+int64_t relayclose(alarm_id_t /*id*/, void* /*user_data*/);
 alarm_id_t pirAlarmId = 0;
+alarm_id_t relayRelease = 0;
 
 lightManager light_manager(LED_CTRL_PIN);
+supplyManager supply_manager;
 
 
 /***************************************************/
@@ -89,6 +87,17 @@ void hardwareInit(){
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);
 
+    gpio_init(GRID_SUPPLY_RELAY);
+    gpio_set_dir(GRID_SUPPLY_RELAY, GPIO_OUT);
+    gpio_put(GRID_SUPPLY_RELAY, 1);
+
+    gpio_init(BATTERY_SUPPLY_RELAY);
+    gpio_set_dir(BATTERY_SUPPLY_RELAY, GPIO_OUT);
+
+    gpio_init(SOLAR_SUPPLY_RELAY);
+    gpio_set_dir(SOLAR_SUPPLY_RELAY, GPIO_OUT);
+
+
     /* Pins with IRQ */
     gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
 
@@ -129,7 +138,7 @@ void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
     }
 }
 
-int64_t pirOff(alarm_id_t id, void* user_data){
+int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/){
     BaseType_t xHigherPriorityTaskWoken, xResult;
     xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     isPirTriggered = false;
@@ -216,7 +225,21 @@ void lightManagerTask(void *pvParameters){
             light_manager.setPWM(NO_MOVEMENT);
         }
 
-
+        /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
+        switch (result)
+        {
+        case NO_POWER_ALERT:
+            /*
+            break;
+        
+        case LOW_POWER_ALERT:
+            //Despertar la tarea de comunicación con alta prioridad y que envíe la alerta de potencia
+            break;
+        
+        default:
+            break;
+        }
+        */
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER1);
     }
 }
@@ -232,8 +255,34 @@ void supplyManagerTask(void *pvParameters){
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
         printf("<---- SUPPLY MANAGER TRIGGERED ---->\r\n");
+        printf("Abriendo relay\r\n");
+        supply_manager.switchRelay(RELEASE_RELAY, GRID_SUPPLY_RELAY);
+        relayRelease = add_alarm_in_ms(1000, relayclose, NULL, true);
+
+        /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
+        switch (result)
+        {
+        case NO_POWER_ALERT:
+            /*
+            break;
+        
+        case LOW_POWER_ALERT:
+            //Despertar la tarea de comunicación con alta prioridad y que envíe la alerta de potencia
+            break;
+        
+        default:
+            break;
+        }
+        */
+
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER2);
     }
+}
+
+int64_t relayclose(alarm_id_t id, void* user_data){
+    printf("Cerrando relay...\r\n");
+    supply_manager.switchRelay(CLOSE_RELAY, BATTERY_SUPPLY_RELAY);
+    return 0;
 }
 
 void packetManagerTask(void *pvParameters){
