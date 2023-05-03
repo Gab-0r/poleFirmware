@@ -124,8 +124,9 @@ void OSinit(){
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
 
     BaseType_t xHigherPriorityTaskWoken, xResult;
-    //printf("Movimiento detectado\r\n");
-    //gpio_put(PICO_DEFAULT_LED_PIN, 1);
+    #if DEBUGLOG_MODE
+        printf("<PIR_TRIGGERED INTERRUPT: MOVEMENT DETECTED>\r\n");
+    #endif
     isPirTriggered = true;
     if (pirAlarmId == 0)
     {   
@@ -143,6 +144,9 @@ int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/){
     BaseType_t xHigherPriorityTaskWoken, xResult;
     xEventGroupSetBitsFromISR(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
     isPirTriggered = false;
+    #if DEBUGLOG_MODE
+        printf("<PIR_OFF INTERRUPT: NO MOVEMENT>");
+    #endif
     //printf("Sin movimiento\r\n");
     gpio_put(PICO_DEFAULT_LED_PIN, 0);
     return 0;
@@ -153,7 +157,9 @@ void periodicTriggerTask(void *pvParameters){
     while (true)
     {
         vTaskDelay(xDelayTrigger);
-        printf("<---- LAUNCHING MEASUREMENT STAGE ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- LAUNCHING MEASUREMENT STAGE ---->\r\n");
+        #endif
         xEventGroupSetBits(xEventGroup, READ_ENVIROMENT_SENSORS_TASKS_TRIGGER);
         xEventGroupSetBits(xEventGroup, READ_ONBOARD_SENSORS_TASKS_TRIGGER);
         xEventGroupSetBits(xEventGroup, READ_EDGE_BOARDS_TASK_TRIGGER);
@@ -170,7 +176,9 @@ void readEnviromentSensorsTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- READING ENVIROMENTAL SENSORS ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- READING ENVIROMENTAL SENSORS ---->\r\n");
+        #endif
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER0);
     }
 }
@@ -184,8 +192,11 @@ void readOnBoardSensorsTask(void *pvParameters){
 
     while (true)
     {
+        
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- READING ON BOARD SENSORS ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- READING ON BOARD SENSORS ---->\r\n");
+        #endif
         xEventGroupSetBits(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER);
         xEventGroupSetBits(xEventGroup, SUPPLY_MANAGER_TASK_TRIGGER);
     }
@@ -201,7 +212,9 @@ void readEdgeBoardsTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- READING EDGE COMPUTING BOARDS ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- READING EDGE COMPUTING BOARDS ---->\r\n");
+        #endif
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER3);
     }
 }
@@ -216,10 +229,14 @@ void lightManagerTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- LIGHT MANAGER TRIGGERED ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- LIGHT MANAGER TASK ---->\r\n");
+        #endif 
 
         if(isPirTriggered){
-            printf("Aumentando duty\r\n");
+            #if DEBUGLOG_MODE
+                printf("INCREASING LAMP BRIGHTNESS\r\n");
+            #endif
             light_manager.setPWM(MOVEMENT_DETECTED);
         }
         else{
@@ -255,10 +272,10 @@ void supplyManagerTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- SUPPLY MANAGER TRIGGERED ---->\r\n");
-        printf("Abriendo relay\r\n");
-        supply_manager.test();
-
+        #if DEBUGLOG_MODE
+            printf("<---- SUPPLY MANAGER TRIGGERED ---->\r\n");
+        #endif
+        supply_manager.changePowerSupply(GRID_SUPPLY_RELAY, SOLAR_SUPPLY_RELAY);
         /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
         switch (result)
         {
@@ -274,7 +291,6 @@ void supplyManagerTask(void *pvParameters){
             break;
         }
         */
-
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER2);
     }
 }
@@ -289,7 +305,9 @@ void packetManagerTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- PACKET MANAGER TRIGGERED ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- PACKET MANAGER TRIGGERED ---->\r\n");
+        #endif
         xEventGroupSetBits(xEventGroup, COM_MANAGER_TASK_TRIGGER);
     }
 }
@@ -304,6 +322,8 @@ void comManagerTask(void *pvParameters){
     while (true)
     {
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
-        printf("<---- COM MANAGER TRIGGERED ---->\r\n");
+        #if DEBUGLOG_MODE
+            printf("<---- COM MANAGER TRIGGERED ---->\r\n");
+        #endif
     }
 }

@@ -41,7 +41,7 @@ class supplyManager{
         /*! \brief Generates a power alert */
         void powerAlert(uint8_t event);
 
-        void test();
+        void changePowerSupply(uint16_t supplyToDisconnect, uint16_t supplyToConnect);
 
     //TODO: Create a method to send telemetry data to a queue
 
@@ -56,7 +56,7 @@ int64_t closeRelay(alarm_id_t id, void* relayPin);
 
 /*! \brief Close a relay. This function cannot be call from an alarm interrupt
 *   \param relayPin Relay pin to set */
-void closeRelay(uint8_t relayPin);
+void closeRelay(uint16_t relayPin);
 
 /*! \brief Release a relay. This function need to be call from an alarm interrupt
 *   \param id Alarm id
@@ -67,4 +67,4 @@ int64_t releaseRelay(alarm_id_t id, void* relayPin);
 
 /*! \brief Release a relay. This function cannot be call from an alarm interrupt
 *   \param relayPin Relay pin */
-void releaseRelay(uint8_t relayPin);
+void releaseRelay(uint16_t relayPin);

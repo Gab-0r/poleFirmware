@@ -10,8 +10,9 @@
 /***************************************************/
 /*                 System parameters               */
 /***************************************************/
+
 /* Print debug messages */
-//#define DEBUGLOG_MODE   1
+#define DEBUGLOG_MODE   0
 /* Period to launch the next measurement stage in ms*/
 #define PERIOD_TRIGGER_TASK 10000UL
 /* Time in ms until the lamp decreases the bright after no detect movement */
