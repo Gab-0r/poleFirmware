@@ -34,11 +34,13 @@
 
 void hardwareInit();
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/);
+void magneticSwitchISR(uint /*gpio*/, uint32_t /*event_mask*/);
+
 //TODO: Definir ISR de los sensores de corriente
 void OSinit();
 
 
-
+uint8_t systemAlert;
 bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
 alarm_id_t pirAlarmId = 0;
@@ -101,6 +103,7 @@ void hardwareInit(){
 
     /* Pins with IRQ */
     gpio_set_irq_enabled_with_callback(PIR_SENSOR_PIN, GPIO_IRQ_EDGE_RISE, true, &pirTriggered);
+    gpio_set_irq_enabled_with_callback(MAGNETIC_SWITCH_PIN, GPIO_IRQ_EDGE_FALL, true, &magneticSwitchISR);
 
 }
 
@@ -114,11 +117,18 @@ void OSinit(){
     xTaskCreate(lightManagerTask, "LighManage", 1000, NULL, 2, NULL);
     xTaskCreate(supplyManagerTask, "SupplyManage", 1000, NULL, 2, NULL);
     xTaskCreate(packetManagerTask, "PacketManage", 1000, NULL, 2, NULL);
-    xTaskCreate(comManagerTask, "COMManage", 1000, NULL, 2, NULL);
+    xTaskCreate(comManagerTask, "COMManage", 1000, NULL, 3, NULL);
 
     /* Create event groups*/
     xEventGroup = xEventGroupCreate();
 
+}
+
+void magneticSwitchISR(uint /*gpio*/, uint32_t /*event_mask*/){
+    BaseType_t xHigherPriorityTaskWoken, xResult;
+    systemAlert = BOX_OPEN;
+    xEventGroupSetBitsFromISR(xEventGroup, COM_MANAGER_TASK_TRIGGER, &xHigherPriorityTaskWoken);
+    //TODO: Manage the timing of generated alerts
 }
 
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/){
@@ -275,7 +285,6 @@ void supplyManagerTask(void *pvParameters){
         #if DEBUGLOG_MODE
             printf("<---- SUPPLY MANAGER TRIGGERED ---->\r\n");
         #endif
-        supply_manager.changePowerSupply(GRID_SUPPLY_RELAY, SOLAR_SUPPLY_RELAY);
         /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
         switch (result)
         {
@@ -325,5 +334,20 @@ void comManagerTask(void *pvParameters){
         #if DEBUGLOG_MODE
             printf("<---- COM MANAGER TRIGGERED ---->\r\n");
         #endif
+
+        if(systemAlert){
+            switch (systemAlert)
+            {
+            case BOX_OPEN:
+                #if DEBUGLOG_MODE
+                    printf("SENDING EMERGENCY PACKET\r\n");
+                #endif
+                systemAlert = NO_ALERT;
+                break;
+            
+            default:
+                break;
+            }
+        }
     }
 }

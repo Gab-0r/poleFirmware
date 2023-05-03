@@ -6,13 +6,14 @@
 #define GRID_SUPPLY_RELAY       (uint16_t)22U
 #define BATTERY_SUPPLY_RELAY    (uint16_t)21U
 #define SOLAR_SUPPLY_RELAY      (uint16_t)20U
+#define MAGNETIC_SWITCH_PIN     (uint16_t)16U
 
 /***************************************************/
 /*                 System parameters               */
 /***************************************************/
 
 /* Print debug messages */
-#define DEBUGLOG_MODE   0
+#define DEBUGLOG_MODE   1
 /* Period to launch the next measurement stage in ms*/
 #define PERIOD_TRIGGER_TASK 10000UL
 /* Time in ms until the lamp decreases the bright after no detect movement */
@@ -64,4 +65,9 @@ enum POWER_EVENTS{
     RELEASE_RELAY,
     LOW_POWER,
     NO_POWER
+};
+
+enum SYSTEM_ALERTS{
+    NO_ALERT,
+    BOX_OPEN
 };
