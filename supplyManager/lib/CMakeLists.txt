@@ -17,4 +17,5 @@ target_link_libraries(supplyManager
         INTERFACE
             pico_stdlib
             hardware_gpio
+            pico_time
 )

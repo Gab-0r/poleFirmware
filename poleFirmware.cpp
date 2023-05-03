@@ -28,18 +28,19 @@
 #define PACKET_MANAGER_TASK_TRIGGER3                    (1UL << 8UL) 
 #define COM_MANAGER_TASK_TRIGGER                        (1UL << 9UL)
 
-
 /***************************************************/
 /*                                                 */
 /***************************************************/
+
 void hardwareInit();
 void pirTriggered(uint /*gpio*/, uint32_t /*event_mask*/);
 //TODO: Definir ISR de los sensores de corriente
 void OSinit();
 
+
+
 bool isPirTriggered = false;
 int64_t pirOff(alarm_id_t /*id*/, void* /*user_data*/);
-int64_t relayclose(alarm_id_t /*id*/, void* /*user_data*/);
 alarm_id_t pirAlarmId = 0;
 alarm_id_t relayRelease = 0;
 
@@ -256,8 +257,7 @@ void supplyManagerTask(void *pvParameters){
         xEventGroupValue = xEventGroupWaitBits(xEventGroup, xBitsToWaitFor, pdTRUE, pdTRUE, portMAX_DELAY);
         printf("<---- SUPPLY MANAGER TRIGGERED ---->\r\n");
         printf("Abriendo relay\r\n");
-        supply_manager.switchRelay(RELEASE_RELAY, GRID_SUPPLY_RELAY);
-        relayRelease = add_alarm_in_ms(1000, relayclose, NULL, true);
+        supply_manager.test();
 
         /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
         switch (result)
@@ -277,12 +277,6 @@ void supplyManagerTask(void *pvParameters){
 
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER2);
     }
-}
-
-int64_t relayclose(alarm_id_t id, void* user_data){
-    printf("Cerrando relay...\r\n");
-    supply_manager.switchRelay(CLOSE_RELAY, BATTERY_SUPPLY_RELAY);
-    return 0;
 }
 
 void packetManagerTask(void *pvParameters){
