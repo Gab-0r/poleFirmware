@@ -15,6 +15,14 @@ class supplyManager{
         uint8_t currentPowerSupply;
         uint16_t currentPower;
         uint8_t operationMode;
+        uint8_t lampCurrent;
+        uint8_t sensorsCurrent;
+        uint8_t sensorsPower;
+        uint8_t lampPower;
+        uint8_t powerStatus;
+        uint8_t lastAction;
+        uint8_t suppliesVoltages[3];
+
         alarm_id_t switchAlert;
     
     public:
@@ -43,8 +51,21 @@ class supplyManager{
 
         void changePowerSupply(uint16_t supplyToDisconnect, uint16_t supplyToConnect);
 
-    //TODO: Create a method to send telemetry data to a queue
+        /* Get methods */
+        inline uint8_t getCurrentPowerSupply();
+        inline uint8_t getCurrentPower();
+        inline uint8_t getLampCurrent();
+        inline uint8_t getSensorsCurrent();
+        inline uint8_t getSensorsPower();
+        inline uint8_t getLampPower();
+        inline uint8_t getPowerStatus();
+        inline uint8_t getLastAction();
+        inline uint8_t* getSuppliesVoltages();
 
+        /* Set methods */
+        inline void setSuppliesVoltages(uint8_t* values){
+            //TODO: FOR LOOP FOR EXTRACT THE POWER SUPPLIES VOLTAGES
+        }
 };
 
 /*! \brief  Close a relay. This function need to be call from an alarm interrupt

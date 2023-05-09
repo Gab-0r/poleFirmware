@@ -56,3 +56,13 @@ void supplyManager::changePowerSupply(uint16_t supplyToDisconnect, uint16_t supp
     static uint16_t data =  supplyToConnect;
     switchAlert = add_alarm_in_ms(RELAY_RELEASE_TIME, closeRelay, &data, true);
 }
+
+inline uint8_t supplyManager::getCurrentPowerSupply(){return currentPowerSupply;}
+inline uint8_t supplyManager::getCurrentPower(){return currentPower;}
+inline uint8_t supplyManager::getLampPower(){return lampPower;}
+inline uint8_t supplyManager::getSensorsCurrent(){return sensorsCurrent;}
+inline uint8_t supplyManager::getSensorsPower(){return sensorsPower;}
+inline uint8_t supplyManager::getLampPower(){return lampPower;}
+inline uint8_t supplyManager::getPowerStatus(){return powerStatus;}
+inline uint8_t supplyManager::getLastAction(){return lastAction;}
+inline uint8_t* supplyManager::getSuppliesVoltages(){return suppliesVoltages;}
