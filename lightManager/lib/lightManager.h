@@ -36,8 +36,14 @@ class lightManager{
         /* Min PWM level */
         uint16_t pwmMinBrightLevel;
 
-        //TODO: Variable for store the actual PWM duty cycle
-        //TODO: define telemetry structure atribute
+        /* Operation mode */
+        uint8_t operationMode; 
+        
+        /* Last control action*/
+        uint8_t lastAction;
+
+        /* State */
+        uint8_t status;
 
     public:
 
@@ -61,11 +67,26 @@ class lightManager{
         */
         void setPWM(uint8_t event);
 
+
+        
+        /* Get Methods */
+
+        inline uint32_t getMeasuredLight();
+        inline uint32_t getExpectedLight();
+        inline uint16_t getPwmMaxBrightLevel();
+        inline uint16_t getPwmMinBrightLevel();
+        inline uint8_t getOperationMode();
+        inline uint8_t getLastAction();
+        inline uint8_t getStatus();
+
+        /* Set methods */
+
         /*! \brief Receive an operation mode and change the maximun and minimun light levels
         * for the operation mode. This levels are defined in the smartPoleConfig file
         *   \param OP Operation mode
         */
-        void setOperationMode(uint8_t OP);
-        
-        //TODO: Definition of method to send telemtry data
+        inline void setOperationMode(uint8_t OP);
+
+        inline void setMaxBrightLevel(uint16_t value);
+        inline void setMinBrightLevel(uint16_t value);
 };

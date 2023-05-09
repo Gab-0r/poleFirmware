@@ -59,15 +59,41 @@ enum SENS_EVENTS
     NO_MOVEMENT
 };
 
-/* Power events*/
-enum POWER_EVENTS{
-    CLOSE_RELAY,
-    RELEASE_RELAY,
-    LOW_POWER,
-    NO_POWER
-};
-
+/* System alerts */
 enum SYSTEM_ALERTS{
     NO_ALERT,
     BOX_OPEN
+};
+
+/* Light Manager status */
+enum LIGHT_MANAGER_STATUS{
+    OK,
+    UNEXPECTED,
+    NOT_WORKING
+};
+
+/* Light Manager control actions */
+enum LIGHT_MANAGER_CONTROL_ACTIONS{
+    INCREASE_BRIGHT,
+    DECREASE_BRIGHT,
+    OP_MODE_CHANGED
+}; 
+
+/* Supply Manager status */
+enum SUPPLY_MANAGER_STATUS{
+    OK,
+    LOW_POWER,
+    OVER_VOLTAGE,
+    OVER_CURRENT,
+    NO_POWER
+};
+
+/* Supply Manager actions*/
+enum POWER_EVENTS{
+    CLOSE_RELAY,
+    RELEASE_RELAY,
+    SUPPLY_CHANGE,
+    MAX_CURRENT_THRESHOLD_CHANGED,
+    MIN_CURRENT_THRESHOLD_CHANGED,
+    OP_MDOE_CHANGED
 };
