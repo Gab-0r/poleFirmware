@@ -50,6 +50,7 @@ lightManager light_manager(LED_CTRL_PIN);
 supplyManager supply_manager;
 
 
+
 /***************************************************/
 /*           Section related to freeRTOS           */
 /***************************************************/
@@ -207,6 +208,10 @@ void readOnBoardSensorsTask(void *pvParameters){
         #if DEBUGLOG_MODE
             printf("<---- READING ON BOARD SENSORS ---->\r\n");
         #endif
+
+        light_manager.getRandomNumber();
+
+
         xEventGroupSetBits(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER);
         xEventGroupSetBits(xEventGroup, SUPPLY_MANAGER_TASK_TRIGGER);
     }
@@ -253,21 +258,25 @@ void lightManagerTask(void *pvParameters){
             light_manager.setPWM(NO_MOVEMENT);
         }
 
-        /* TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
+        //TODO: Comprobar si hay correcta operación, de lo contrario iniciar comunicación de emergencia
+        uint8_t result = light_manager.lightFeedBackCheck();
         switch (result)
         {
-        case NO_POWER_ALERT:
-            /*
+        case EXPECTED:
             break;
         
-        case LOW_POWER_ALERT:
-            //Despertar la tarea de comunicación con alta prioridad y que envíe la alerta de potencia
+        case UNEXPECTED:
             break;
         
+        case NOT_WORKING:
+            break;
+
         default:
             break;
         }
-        */
+        
+        
+
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER1);
     }
 }

@@ -67,7 +67,7 @@ enum SYSTEM_ALERTS{
 
 /* Light Manager status */
 enum LIGHT_MANAGER_STATUS{
-    OK,
+    EXPECTED,
     UNEXPECTED,
     NOT_WORKING
 };

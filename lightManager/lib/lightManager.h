@@ -57,7 +57,7 @@ class lightManager{
          *  \return Lamp operation state
          * 
         */
-        uint8_t lightFeedBackCheck(uint32_t measuredLight);
+        uint8_t lightFeedBackCheck();
 
         /*! \brief Initialize the PWM with parameters specified in the smarPoleConfig file */
         void initPWM();
@@ -67,8 +67,13 @@ class lightManager{
         */
         void setPWM(uint8_t event);
 
+        /* ONLY FOR DEBUG PURPOSES */
+        inline bool get_random_bit();
+        uint8_t getRandomNumber();
 
-        
+        /* To read light sensor */
+        void readSensorsAndUpdate();
+
         /* Get Methods */
 
         inline uint32_t getMeasuredLight();

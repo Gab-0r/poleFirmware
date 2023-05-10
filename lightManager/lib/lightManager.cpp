@@ -13,6 +13,7 @@
 #include "lightManager.h"
 #include "hardware/pwm.h"
 #include "smartPoleConfig.h"
+#include "hardware/structs/rosc.h"
 
 
 lightManager::lightManager(uint16_t pwmPin_){
@@ -21,8 +22,19 @@ lightManager::lightManager(uint16_t pwmPin_){
     initPWM();
 }
 
-uint8_t lightManager::lightFeedBackCheck(uint32_t measuredLight){
+uint8_t lightManager::lightFeedBackCheck(){
     //TODO: Function implementation
+
+    if(measuredLight == 0){
+        return NOT_WORKING;
+    }
+
+    if(measuredLight == expectedLight){
+        return EXPECTED;
+    }
+    else{
+        return UNEXPECTED;
+    } 
     return 0;
 }
 
@@ -49,6 +61,28 @@ void lightManager::setPWM(uint8_t event){
     }
 }
 
+inline bool lightManager::get_random_bit(){return rosc_hw->randombit;}
+
+uint8_t lightManager::getRandomNumber(){
+    uint8_t number = 0;
+    for (size_t i = 0; i < 8; i++)
+    {
+        bool bit = get_random_bit();
+        number  = number | (bit << i);
+        //printf("Random bit generated: %d\r\n", bit);
+    }
+    //printf("Random number generated: %d\r\n", number);
+    return number;
+}
+
+void lightManager::readSensorsAndUpdate(){
+    //TODO: Real function implementation to read light sensor
+
+    measuredLight = getRandomNumber();
+    expectedLight = measuredLight;
+}
+
+
 void lightManager::setOperationMode(uint8_t OP){
     switch (OP)
     {
@@ -58,6 +92,7 @@ void lightManager::setOperationMode(uint8_t OP){
             #endif
             pwmMaxBrightLevel = MAX_BRIGHT_DUTY*LAMP_PWM_WRAP/100;
             pwmMinBrightLevel = MIN_BRIGHT_DUTY*LAMP_PWM_WRAP/100;
+            operationMode = NORMAL_OPERATION;
         break;
     
     case POWER_SAVING:
@@ -66,6 +101,7 @@ void lightManager::setOperationMode(uint8_t OP){
             #endif
             pwmMaxBrightLevel = MAX_BRIGHT_ENERGY_SAVING_DUTY*LAMP_PWM_WRAP/100;
             pwmMinBrightLevel = MIN_BRIGHT_ENERGY_SAVING_DUTY*LAMP_PWM_WRAP/100;
+            operationMode = POWER_SAVING;
         break;
 
     case EMERGENCY_OPERATION:
@@ -74,6 +110,7 @@ void lightManager::setOperationMode(uint8_t OP){
             #endif
             pwmMaxBrightLevel = MAX_BRIGHT_EMERGENCY_DUTY*LAMP_PWM_WRAP/100;
             pwmMinBrightLevel = MIN_BRIGHT_EMERGENCY_DUTY*LAMP_PWM_WRAP/100;
+            operationMode = EMERGENCY_OPERATION;
         break;
 
     default:

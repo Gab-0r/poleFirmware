@@ -59,7 +59,7 @@ void supplyManager::changePowerSupply(uint16_t supplyToDisconnect, uint16_t supp
 
 inline uint8_t supplyManager::getCurrentPowerSupply(){return currentPowerSupply;}
 inline uint8_t supplyManager::getCurrentPower(){return currentPower;}
-inline uint8_t supplyManager::getLampPower(){return lampPower;}
+inline uint8_t supplyManager::getLampCurrent(){return lampCurrent;}
 inline uint8_t supplyManager::getSensorsCurrent(){return sensorsCurrent;}
 inline uint8_t supplyManager::getSensorsPower(){return sensorsPower;}
 inline uint8_t supplyManager::getLampPower(){return lampPower;}

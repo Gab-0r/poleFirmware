@@ -50,7 +50,7 @@ class supplyManager{
         void powerAlert(uint8_t event);
 
         void changePowerSupply(uint16_t supplyToDisconnect, uint16_t supplyToConnect);
-
+        
         /* Get methods */
         inline uint8_t getCurrentPowerSupply();
         inline uint8_t getCurrentPower();
