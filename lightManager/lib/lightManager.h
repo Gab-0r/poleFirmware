@@ -16,7 +16,7 @@ class lightManager{
     private:
 
         /* Light levels measured by light sensor */
-        uint32_t measuredLight;
+        uint8_t measuredLight;
 
         /* Light level expected for the current PWM duty cycle */
         uint32_t expectedLight;
@@ -76,7 +76,7 @@ class lightManager{
 
         /* Get Methods */
 
-        inline uint32_t getMeasuredLight();
+        inline uint8_t getMeasuredLight();
         inline uint32_t getExpectedLight();
         inline uint16_t getPwmMaxBrightLevel();
         inline uint16_t getPwmMinBrightLevel();

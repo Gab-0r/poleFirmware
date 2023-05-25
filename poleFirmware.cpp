@@ -1,9 +1,16 @@
 /**
- * Smart pole firmware
- * By Juan Gabriel Orozco Orozco - 2023
+ * @file poleFirmware.cpp
+ * @author Juan Gabriel Orozco Orozco
+ * @brief Main file of the smart pole firmware. This file initialize the hardware, the operating system
+ * and start the scheduler with its tasks
+ * @version 1.0
+ * @date 2023-04-4
  * 
- * Description.....
+ * @copyright Copyright (c) 2023
+ * 
  */
+
+
 
 #include <FreeRTOS.h>
 #include <task.h>
@@ -47,9 +54,9 @@ alarm_id_t pirAlarmId = 0;
 alarm_id_t relayRelease = 0;
 
 lightManager light_manager(LED_CTRL_PIN);
+lighData lightManagerInfo;
+
 supplyManager supply_manager;
-
-
 
 /***************************************************/
 /*           Section related to freeRTOS           */
@@ -209,8 +216,7 @@ void readOnBoardSensorsTask(void *pvParameters){
             printf("<---- READING ON BOARD SENSORS ---->\r\n");
         #endif
 
-        light_manager.getRandomNumber();
-
+        light_manager.readSensorsAndUpdate();
 
         xEventGroupSetBits(xEventGroup, LIGHT_MANAGER_TASK_TRIGGER);
         xEventGroupSetBits(xEventGroup, SUPPLY_MANAGER_TASK_TRIGGER);
@@ -275,8 +281,6 @@ void lightManagerTask(void *pvParameters){
             break;
         }
         
-        
-
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER1);
     }
 }

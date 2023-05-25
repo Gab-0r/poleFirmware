@@ -137,7 +137,7 @@ void lightManager::initPWM(){
     #endif 
 }
 
-inline uint32_t lightManager::getMeasuredLight(){return measuredLight;}
+inline uint8_t lightManager::getMeasuredLight(){return measuredLight;}
 
 inline uint32_t lightManager::getExpectedLight(){return expectedLight;}
 

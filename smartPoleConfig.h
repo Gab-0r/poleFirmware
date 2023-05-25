@@ -43,7 +43,6 @@
 /*                    Enumerations                 */
 /***************************************************/
 
-
 /* Operating modes */
 enum OP_MODE
 {
@@ -97,3 +96,15 @@ enum POWER_EVENTS{
     MIN_CURRENT_THRESHOLD_CHANGED,
     OP_MDOE_CHANGED
 };
+
+/***************************************************/
+/*                    STRUCTS                      */
+/***************************************************/
+
+typedef struct lighData
+{
+    uint16_t lightLevels[2];
+    uint8_t currentBright;
+    uint8_t lastAction;
+    uint8_t status;
+}lightData;
