@@ -1,13 +1,3 @@
-/**
- * Light Manager Class
- * By Juan Gabriel Orozco Orozco - 2023
- * 
- * This class manages the light levels based on a given event, given
- * order or a mode operation of the system. The light levels are controlled by
- * a PWM pin that is specfied when the class is instantiate. This file contains the
- * functiona implementations for the class.
- */
-
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "lightManager.h"

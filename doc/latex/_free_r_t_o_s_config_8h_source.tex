@@ -1,0 +1,147 @@
+\hypertarget{_free_r_t_o_s_config_8h_source}{}\doxysection{C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/\+Free\+RTOSConfig.h}
+\mbox{\hyperlink{_free_r_t_o_s_config_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{ * FreeRTOS V202107.00}}
+\DoxyCodeLine{3 \textcolor{comment}{ * Copyright (C) 2020 Amazon.com, Inc. or its affiliates.  All Rights Reserved.}}
+\DoxyCodeLine{4 \textcolor{comment}{ *}}
+\DoxyCodeLine{5 \textcolor{comment}{ * Permission is hereby granted, free of charge, to any person obtaining a copy of}}
+\DoxyCodeLine{6 \textcolor{comment}{ * this software and associated documentation files (the "{}Software"{}), to deal in}}
+\DoxyCodeLine{7 \textcolor{comment}{ * the Software without restriction, including without limitation the rights to}}
+\DoxyCodeLine{8 \textcolor{comment}{ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of}}
+\DoxyCodeLine{9 \textcolor{comment}{ * the Software, and to permit persons to whom the Software is furnished to do so,}}
+\DoxyCodeLine{10 \textcolor{comment}{ * subject to the following conditions:}}
+\DoxyCodeLine{11 \textcolor{comment}{ *}}
+\DoxyCodeLine{12 \textcolor{comment}{ * The above copyright notice and this permission notice shall be included in all}}
+\DoxyCodeLine{13 \textcolor{comment}{ * copies or substantial portions of the Software.}}
+\DoxyCodeLine{14 \textcolor{comment}{ *}}
+\DoxyCodeLine{15 \textcolor{comment}{ * THE SOFTWARE IS PROVIDED "{}AS IS"{}, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR}}
+\DoxyCodeLine{16 \textcolor{comment}{ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS}}
+\DoxyCodeLine{17 \textcolor{comment}{ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR}}
+\DoxyCodeLine{18 \textcolor{comment}{ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER}}
+\DoxyCodeLine{19 \textcolor{comment}{ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN}}
+\DoxyCodeLine{20 \textcolor{comment}{ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.}}
+\DoxyCodeLine{21 \textcolor{comment}{ *}}
+\DoxyCodeLine{22 \textcolor{comment}{ * http://www.FreeRTOS.org}}
+\DoxyCodeLine{23 \textcolor{comment}{ * http://aws.amazon.com/freertos}}
+\DoxyCodeLine{24 \textcolor{comment}{ *}}
+\DoxyCodeLine{25 \textcolor{comment}{ * 1 tab == 4 spaces!}}
+\DoxyCodeLine{26 \textcolor{comment}{ */}}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#ifndef FREERTOS\_CONFIG\_H}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define FREERTOS\_CONFIG\_H}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{32 \textcolor{comment}{ * Application specific definitions.}}
+\DoxyCodeLine{33 \textcolor{comment}{ *}}
+\DoxyCodeLine{34 \textcolor{comment}{ * These definitions should be adjusted for your particular hardware and}}
+\DoxyCodeLine{35 \textcolor{comment}{ * application requirements.}}
+\DoxyCodeLine{36 \textcolor{comment}{ *}}
+\DoxyCodeLine{37 \textcolor{comment}{ * THESE PARAMETERS ARE DESCRIBED WITHIN THE 'CONFIGURATION' SECTION OF THE}}
+\DoxyCodeLine{38 \textcolor{comment}{ * FreeRTOS API DOCUMENTATION AVAILABLE ON THE FreeRTOS.org WEB SITE.}}
+\DoxyCodeLine{39 \textcolor{comment}{ *}}
+\DoxyCodeLine{40 \textcolor{comment}{ * See http://www.freertos.org/a00110.html}}
+\DoxyCodeLine{41 \textcolor{comment}{ *-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{comment}{/* Scheduler Related */}}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define configUSE\_PREEMPTION                    1 }\textcolor{comment}{// 1 preemptive RTOS scheduler            0 cooperative RTOS scheduler}}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define configUSE\_TICKLESS\_IDLE                 0 }\textcolor{comment}{// 1 low power tickless mode              0 to keep the tick interrupt running}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define configUSE\_IDLE\_HOOK                     0 }\textcolor{comment}{// 1 if you wish to use an idle hook      0 to omit an idle hook}}
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define configUSE\_MALLOC\_FAILED\_HOOK            0 }\textcolor{comment}{// 1 app must define a malloc() failed hook       0 malloc() failed hook function will not be called}}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define configUSE\_DAEMON\_TASK\_STARTUP\_HOOK      0 }\textcolor{comment}{// 1 app must define a daemon task startup hook   0 daemon task startup hook will not be calles}}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define configUSE\_TICK\_HOOK                     0 }\textcolor{comment}{// 1 if you wish to use a tick hook      0 to omit a tick hook.}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define configCPU\_CLOCK\_HZ                      48000000 }\textcolor{comment}{// frequency in Hz at which the internal clock that drives the peripheral used to generate the tick interrupt will be executing}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define configTICK\_RATE\_HZ                      ( ( TickType\_t ) 1000 ) }\textcolor{comment}{//  Frequency of the RTOS tick interrupt.}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define configMAX\_PRIORITIES                    32 }\textcolor{comment}{// The number of priorities available to the application tasks}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#define configMINIMAL\_STACK\_SIZE                ( configSTACK\_DEPTH\_TYPE ) 256 }\textcolor{comment}{//The number of priorities available to the application tasks}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#define configMAX\_TASK\_NAME\_LEN                 10 }\textcolor{comment}{// The maximum permissible length of the descriptive name given to a task when the task is created}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define configUSE\_16\_BIT\_TICKS                  0}}
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#define configUSE\_TIME\_SLICING                  1}}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define configIDLE\_SHOULD\_YIELD                 1}}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{comment}{/* Synchronization Related */}}
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define configUSE\_MUTEXES                       1}}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define configUSE\_RECURSIVE\_MUTEXES             1}}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define configUSE\_APPLICATION\_TASK\_TAG          0}}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define configUSE\_COUNTING\_SEMAPHORES           1}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define configQUEUE\_REGISTRY\_SIZE               8}}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define configUSE\_QUEUE\_SETS                    1}}
+\DoxyCodeLine{67 \textcolor{preprocessor}{\#define configUSE\_NEWLIB\_REENTRANT              0}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#define configENABLE\_BACKWARD\_COMPATIBILITY     0}}
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#define configNUM\_THREAD\_LOCAL\_STORAGE\_POINTERS 5}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{/* System */}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define configSTACK\_DEPTH\_TYPE                  uint32\_t}}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define configMESSAGE\_BUFFER\_LENGTH\_TYPE        size\_t}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{/* Memory allocation related definitions. */}}
+\DoxyCodeLine{76 \textcolor{preprocessor}{\#define configSUPPORT\_STATIC\_ALLOCATION         0}}
+\DoxyCodeLine{77 \textcolor{preprocessor}{\#define configSUPPORT\_DYNAMIC\_ALLOCATION        1}}
+\DoxyCodeLine{78 \textcolor{preprocessor}{\#define configTOTAL\_HEAP\_SIZE                   (128*1024)}}
+\DoxyCodeLine{79 \textcolor{preprocessor}{\#define configAPPLICATION\_ALLOCATED\_HEAP        0}}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{comment}{/* Hook function related definitions. */}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define configCHECK\_FOR\_STACK\_OVERFLOW          0}}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84 \textcolor{comment}{/* Run time and task stats gathering related definitions. */}}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#define configGENERATE\_RUN\_TIME\_STATS           0}}
+\DoxyCodeLine{86 \textcolor{preprocessor}{\#define configUSE\_TRACE\_FACILITY                1}}
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#define configUSE\_STATS\_FORMATTING\_FUNCTIONS    0}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{comment}{/* Co-\/routine related definitions. */}}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define configUSE\_CO\_ROUTINES                   0}}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define configMAX\_CO\_ROUTINE\_PRIORITIES         1}}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93 \textcolor{comment}{/* Software timer related definitions. */}}
+\DoxyCodeLine{94 \textcolor{preprocessor}{\#define configUSE\_TIMERS                        1}}
+\DoxyCodeLine{95 \textcolor{preprocessor}{\#define configTIMER\_TASK\_PRIORITY               ( configMAX\_PRIORITIES -\/ 1 )}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{\#define configTIMER\_QUEUE\_LENGTH                10}}
+\DoxyCodeLine{97 \textcolor{preprocessor}{\#define configTIMER\_TASK\_STACK\_DEPTH            1024}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 \textcolor{comment}{/* Interrupt nesting behaviour configuration. */}}
+\DoxyCodeLine{100 \textcolor{comment}{/*}}
+\DoxyCodeLine{101 \textcolor{comment}{\#define configKERNEL\_INTERRUPT\_PRIORITY         [dependent of processor]}}
+\DoxyCodeLine{102 \textcolor{comment}{\#define configMAX\_SYSCALL\_INTERRUPT\_PRIORITY    [dependent on processor and application]}}
+\DoxyCodeLine{103 \textcolor{comment}{\#define configMAX\_API\_CALL\_INTERRUPT\_PRIORITY   [dependent on processor and application]}}
+\DoxyCodeLine{104 \textcolor{comment}{*/}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{comment}{/* SMP port only */}}
+\DoxyCodeLine{107 \textcolor{preprocessor}{\#define configNUM\_CORES                         2 }\textcolor{comment}{// Sets the number of available processor cores}}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define configTICK\_CORE                         0 }\textcolor{comment}{// indicates which core should handle the SysTick}}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define configRUN\_MULTIPLE\_PRIORITIES           0 }\textcolor{comment}{// 0 multiple equal priority tasks...  1 multiple tasks with different priorities...  ...may run simultaneously}}
+\DoxyCodeLine{110 \textcolor{preprocessor}{\#define configUSE\_CORE\_AFFINITY                 0 }\textcolor{comment}{// 0 scheduler execute tasks anywhere, 1 user controls in wich core a task execute 'vTaskCoreAffinitySet'}}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define configUSE\_TASK\_PREEMPTION\_DISABLE       0 }\textcolor{comment}{// 1 each task can be set to either pre-\/emptive or cooperative mode}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{comment}{/* RP2040 specific */}}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define configSUPPORT\_PICO\_SYNC\_INTEROP         1 }\textcolor{comment}{// 1 means that SDK pico\_sync sem/mutex/queue etc. will work correctly when called from FreeRTOS tasks}}
+\DoxyCodeLine{115 \textcolor{preprocessor}{\#define configSUPPORT\_PICO\_TIME\_INTEROP         1 }\textcolor{comment}{// 1 means that SDK pico\_time sleep\_ms/sleep\_us/sleep\_until will work correctly when called from FreeRTOS tasks, and will actually block at the FreeRTOS level}}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#include <assert.h>}}
+\DoxyCodeLine{118 \textcolor{comment}{/* Define to trap errors during development. */}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define configASSERT(x)                         assert(x)}}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121 \textcolor{comment}{/* Set the following definitions to 1 to include the API function, or zero}}
+\DoxyCodeLine{122 \textcolor{comment}{to exclude the API function. */}}
+\DoxyCodeLine{123 \textcolor{preprocessor}{\#define INCLUDE\_vTaskPrioritySet                1}}
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#define INCLUDE\_uxTaskPriorityGet               1}}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#define INCLUDE\_vTaskDelete                     1}}
+\DoxyCodeLine{126 \textcolor{preprocessor}{\#define INCLUDE\_vTaskSuspend                    1}}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#define INCLUDE\_vTaskDelayUntil                 1}}
+\DoxyCodeLine{128 \textcolor{preprocessor}{\#define INCLUDE\_vTaskDelay                      1}}
+\DoxyCodeLine{129 \textcolor{preprocessor}{\#define INCLUDE\_xTaskGetSchedulerState          1}}
+\DoxyCodeLine{130 \textcolor{preprocessor}{\#define INCLUDE\_xTaskGetCurrentTaskHandle       1}}
+\DoxyCodeLine{131 \textcolor{preprocessor}{\#define INCLUDE\_uxTaskGetStackHighWaterMark     1}}
+\DoxyCodeLine{132 \textcolor{preprocessor}{\#define INCLUDE\_xTaskGetIdleTaskHandle          1}}
+\DoxyCodeLine{133 \textcolor{preprocessor}{\#define INCLUDE\_eTaskGetState                   1}}
+\DoxyCodeLine{134 \textcolor{preprocessor}{\#define INCLUDE\_xTimerPendFunctionCall          1}}
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#define INCLUDE\_xTaskAbortDelay                 1}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#define INCLUDE\_xTaskGetHandle                  1}}
+\DoxyCodeLine{137 \textcolor{preprocessor}{\#define INCLUDE\_xTaskResumeFromISR              1}}
+\DoxyCodeLine{138 \textcolor{preprocessor}{\#define INCLUDE\_xQueueGetMutexHolder            1}}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140 \textcolor{comment}{/* A header file that defines trace macro can be included here. */}}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 \textcolor{preprocessor}{\#endif }\textcolor{comment}{/* FREERTOS\_CONFIG\_H */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

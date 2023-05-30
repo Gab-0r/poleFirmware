@@ -1,0 +1,280 @@
+\hypertarget{classsupply_manager}{}\doxysection{supply\+Manager Class Reference}
+\label{classsupply_manager}\index{supplyManager@{supplyManager}}
+
+
+This class manage the different power supplies, measure their power and select the appropiate one. In addition the class can report power events that affect the system.  
+
+
+
+
+{\ttfamily \#include $<$supply\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classsupply_manager_ad9edbf18fc11636a602a4b7e84c6db61}{supply\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new power supply object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsupply_manager_ad487317a437e2ce83edc9c427dcbe41d}{switch\+Relay}} (uint8\+\_\+t switch\+Type, uint16\+\_\+t relay2\+Control)
+\begin{DoxyCompactList}\small\item\em Change the state of a relay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsupply_manager_a8261a960e5e96ef9884c424c0e6237aa}{set\+Operation\+Mode}} (uint8\+\_\+t op\+Mode)
+\begin{DoxyCompactList}\small\item\em Receive and operation mode and change the maximun and minimun power levels for the operation mode. This levels are defined in the smart\+Pole\+Config file. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_aee5c6e004af7cceb221a96aa2eb3a58d}{get\+Operation\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Return the operation mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsupply_manager_ae5d6a72b6e6f2ab1c76d0e27d8a7ae7e}{power\+Alert}} (uint8\+\_\+t event)
+\begin{DoxyCompactList}\small\item\em Generates a power alert. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsupply_manager_aac2fcfba2427412c8bd1ad63c4395c81}{change\+Power\+Supply}} (uint16\+\_\+t supply\+To\+Disconnect, uint16\+\_\+t supply\+To\+Connect)
+\begin{DoxyCompactList}\small\item\em Changes the power supply of the system. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a74c4545226308101f563c78b93954986}{get\+Current\+Power\+Supply}} ()
+\begin{DoxyCompactList}\small\item\em Get the current power supply that feeds the system. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a4eea844204d67ab1febc2d07dbcae346}{get\+Current\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Get the current power consumption. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a0a75e1b65d8839fbf3c4d07dd44e9384}{get\+Lamp\+Current}} ()
+\begin{DoxyCompactList}\small\item\em Get the current that is flowing through the lamp. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_af1b271f36ff15ac17d96d7c88fccaa4c}{get\+Sensors\+Current}} ()
+\begin{DoxyCompactList}\small\item\em Get the current that is flowing through the sensors. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_ab90cad9f78349cea236ae2a4dd19a467}{get\+Sensors\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Get the sensors power consumption. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a40c47ea95c330e2ed17c923930f29421}{get\+Lamp\+Power}} ()
+\begin{DoxyCompactList}\small\item\em Get the power consumption of the lamp. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a31d1a17374ae00676cd7199349a91add}{get\+Power\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Get the power status of the system. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classsupply_manager_a2375edccf753e828f46d2ba8f63df1da}{get\+Last\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Get the last control action. \end{DoxyCompactList}\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{classsupply_manager_a7b890cd9337fe64ace5a41cb6780f955}{get\+Supplies\+Voltages}} ()
+\begin{DoxyCompactList}\small\item\em Get the power supplies voltages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classsupply_manager_a6e903f52a0520b8c52cb61d5bb517616}{set\+Supplies\+Voltages}} (uint8\+\_\+t $\ast$values)
+\begin{DoxyCompactList}\small\item\em Set the supplies voltages values. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class manage the different power supplies, measure their power and select the appropiate one. In addition the class can report power events that affect the system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classsupply_manager_ad9edbf18fc11636a602a4b7e84c6db61}\label{classsupply_manager_ad9edbf18fc11636a602a4b7e84c6db61}} 
+\index{supplyManager@{supplyManager}!supplyManager@{supplyManager}}
+\index{supplyManager@{supplyManager}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{supplyManager()}{supplyManager()}}
+{\footnotesize\ttfamily supply\+Manager\+::supply\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new power supply object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classsupply_manager_aac2fcfba2427412c8bd1ad63c4395c81}\label{classsupply_manager_aac2fcfba2427412c8bd1ad63c4395c81}} 
+\index{supplyManager@{supplyManager}!changePowerSupply@{changePowerSupply}}
+\index{changePowerSupply@{changePowerSupply}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{changePowerSupply()}{changePowerSupply()}}
+{\footnotesize\ttfamily void supply\+Manager\+::change\+Power\+Supply (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{supply\+To\+Disconnect,  }\item[{uint16\+\_\+t}]{supply\+To\+Connect }\end{DoxyParamCaption})}
+
+
+
+Changes the power supply of the system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em supply\+To\+Disconnect} & Power supply to disconect \\
+\hline
+{\em supply\+To\+Connect} & Power supply to connect \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsupply_manager_a4eea844204d67ab1febc2d07dbcae346}\label{classsupply_manager_a4eea844204d67ab1febc2d07dbcae346}} 
+\index{supplyManager@{supplyManager}!getCurrentPower@{getCurrentPower}}
+\index{getCurrentPower@{getCurrentPower}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentPower()}{getCurrentPower()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Current\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current power consumption. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a74c4545226308101f563c78b93954986}\label{classsupply_manager_a74c4545226308101f563c78b93954986}} 
+\index{supplyManager@{supplyManager}!getCurrentPowerSupply@{getCurrentPowerSupply}}
+\index{getCurrentPowerSupply@{getCurrentPowerSupply}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getCurrentPowerSupply()}{getCurrentPowerSupply()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Current\+Power\+Supply (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current power supply that feeds the system. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a0a75e1b65d8839fbf3c4d07dd44e9384}\label{classsupply_manager_a0a75e1b65d8839fbf3c4d07dd44e9384}} 
+\index{supplyManager@{supplyManager}!getLampCurrent@{getLampCurrent}}
+\index{getLampCurrent@{getLampCurrent}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getLampCurrent()}{getLampCurrent()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Lamp\+Current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current that is flowing through the lamp. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a40c47ea95c330e2ed17c923930f29421}\label{classsupply_manager_a40c47ea95c330e2ed17c923930f29421}} 
+\index{supplyManager@{supplyManager}!getLampPower@{getLampPower}}
+\index{getLampPower@{getLampPower}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getLampPower()}{getLampPower()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Lamp\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the power consumption of the lamp. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a2375edccf753e828f46d2ba8f63df1da}\label{classsupply_manager_a2375edccf753e828f46d2ba8f63df1da}} 
+\index{supplyManager@{supplyManager}!getLastAction@{getLastAction}}
+\index{getLastAction@{getLastAction}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getLastAction()}{getLastAction()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Last\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the last control action. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_aee5c6e004af7cceb221a96aa2eb3a58d}\label{classsupply_manager_aee5c6e004af7cceb221a96aa2eb3a58d}} 
+\index{supplyManager@{supplyManager}!getOperationMode@{getOperationMode}}
+\index{getOperationMode@{getOperationMode}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getOperationMode()}{getOperationMode()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Operation\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the operation mode. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a31d1a17374ae00676cd7199349a91add}\label{classsupply_manager_a31d1a17374ae00676cd7199349a91add}} 
+\index{supplyManager@{supplyManager}!getPowerStatus@{getPowerStatus}}
+\index{getPowerStatus@{getPowerStatus}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getPowerStatus()}{getPowerStatus()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Power\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the power status of the system. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_af1b271f36ff15ac17d96d7c88fccaa4c}\label{classsupply_manager_af1b271f36ff15ac17d96d7c88fccaa4c}} 
+\index{supplyManager@{supplyManager}!getSensorsCurrent@{getSensorsCurrent}}
+\index{getSensorsCurrent@{getSensorsCurrent}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getSensorsCurrent()}{getSensorsCurrent()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Sensors\+Current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current that is flowing through the sensors. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_ab90cad9f78349cea236ae2a4dd19a467}\label{classsupply_manager_ab90cad9f78349cea236ae2a4dd19a467}} 
+\index{supplyManager@{supplyManager}!getSensorsPower@{getSensorsPower}}
+\index{getSensorsPower@{getSensorsPower}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getSensorsPower()}{getSensorsPower()}}
+{\footnotesize\ttfamily uint8\+\_\+t supply\+Manager\+::get\+Sensors\+Power (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the sensors power consumption. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_a7b890cd9337fe64ace5a41cb6780f955}\label{classsupply_manager_a7b890cd9337fe64ace5a41cb6780f955}} 
+\index{supplyManager@{supplyManager}!getSuppliesVoltages@{getSuppliesVoltages}}
+\index{getSuppliesVoltages@{getSuppliesVoltages}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{getSuppliesVoltages()}{getSuppliesVoltages()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ supply\+Manager\+::get\+Supplies\+Voltages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the power supplies voltages. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t$\ast$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classsupply_manager_ae5d6a72b6e6f2ab1c76d0e27d8a7ae7e}\label{classsupply_manager_ae5d6a72b6e6f2ab1c76d0e27d8a7ae7e}} 
+\index{supplyManager@{supplyManager}!powerAlert@{powerAlert}}
+\index{powerAlert@{powerAlert}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{powerAlert()}{powerAlert()}}
+{\footnotesize\ttfamily void supply\+Manager\+::power\+Alert (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{event }\end{DoxyParamCaption})}
+
+
+
+Generates a power alert. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event that happened \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsupply_manager_a8261a960e5e96ef9884c424c0e6237aa}\label{classsupply_manager_a8261a960e5e96ef9884c424c0e6237aa}} 
+\index{supplyManager@{supplyManager}!setOperationMode@{setOperationMode}}
+\index{setOperationMode@{setOperationMode}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{setOperationMode()}{setOperationMode()}}
+{\footnotesize\ttfamily void supply\+Manager\+::set\+Operation\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{op\+Mode }\end{DoxyParamCaption})}
+
+
+
+Receive and operation mode and change the maximun and minimun power levels for the operation mode. This levels are defined in the smart\+Pole\+Config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em op\+Mode} & Operation mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsupply_manager_a6e903f52a0520b8c52cb61d5bb517616}\label{classsupply_manager_a6e903f52a0520b8c52cb61d5bb517616}} 
+\index{supplyManager@{supplyManager}!setSuppliesVoltages@{setSuppliesVoltages}}
+\index{setSuppliesVoltages@{setSuppliesVoltages}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{setSuppliesVoltages()}{setSuppliesVoltages()}}
+{\footnotesize\ttfamily void supply\+Manager\+::set\+Supplies\+Voltages (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{values }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the supplies voltages values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & Pointer to array for values to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classsupply_manager_ad487317a437e2ce83edc9c427dcbe41d}\label{classsupply_manager_ad487317a437e2ce83edc9c427dcbe41d}} 
+\index{supplyManager@{supplyManager}!switchRelay@{switchRelay}}
+\index{switchRelay@{switchRelay}!supplyManager@{supplyManager}}
+\doxysubsubsection{\texorpdfstring{switchRelay()}{switchRelay()}}
+{\footnotesize\ttfamily void supply\+Manager\+::switch\+Relay (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{switch\+Type,  }\item[{uint16\+\_\+t}]{relay2\+Control }\end{DoxyParamCaption})}
+
+
+
+Change the state of a relay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em switch\+Type} & Tells what action the relays do (Open/\+Close) \\
+\hline
+{\em relay2\+Control} & The relay pin to switch \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/supply\+Manager/lib/\mbox{\hyperlink{supply_manager_8h}{supply\+Manager.\+h}}\item 
+C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/supply\+Manager/lib/\mbox{\hyperlink{supply_manager_8cpp}{supply\+Manager.\+cpp}}\end{DoxyCompactItemize}

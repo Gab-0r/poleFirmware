@@ -1,0 +1,76 @@
+\hypertarget{light_manager_8h_source}{}\doxysection{light\+Manager.\+h}
+\label{light_manager_8h_source}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/lightManager/lib/lightManager.h@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/lightManager/lib/lightManager.h}}
+\mbox{\hyperlink{light_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include "{}pico/stdlib.h"{}}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 }
+\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classlight_manager}{lightManager}}\{}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keyword}{private}:}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{29         uint8\_t measuredLight;}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{35         uint32\_t expectedLight;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{41         uint8\_t pwmPin;}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{47         uint pwmSlice;}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{53         uint pwmChannel;}
+\DoxyCodeLine{54         }
+\DoxyCodeLine{59         uint16\_t pwmMaxBrightLevel;}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{65         uint16\_t pwmMinBrightLevel;}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{71         uint8\_t operationMode; }
+\DoxyCodeLine{72         }
+\DoxyCodeLine{77         uint8\_t lastAction;}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{83         uint8\_t status;}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keyword}{public}:}
+\DoxyCodeLine{86     }
+\DoxyCodeLine{92         \mbox{\hyperlink{classlight_manager_aace121fd6cd39e3074cf62bfabb35f56}{lightManager}}(uint16\_t pwmPin\_);}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{99         uint8\_t \mbox{\hyperlink{classlight_manager_ab0be6cf23006ac76c3a51d4ade4039b2}{lightFeedBackCheck}}();}
+\DoxyCodeLine{100 }
+\DoxyCodeLine{104         \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_a22f898b7f1a49c7cba61cff04d75b142}{initPWM}}();}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{115         \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_ad49ef31364fff1dfa88ae3d226b971c4}{setPWM}}(uint8\_t event);}
+\DoxyCodeLine{116 }
+\DoxyCodeLine{117         \textcolor{comment}{/* ONLY FOR DEBUG PURPOSES */}}
+\DoxyCodeLine{118         \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classlight_manager_a04197263cc800c59c9ea9cd3b6ef05e8}{get\_random\_bit}}();}
+\DoxyCodeLine{119         uint8\_t \mbox{\hyperlink{classlight_manager_a7fe7fae478c975d7e0b963b8b7540774}{getRandomNumber}}();}
+\DoxyCodeLine{120 }
+\DoxyCodeLine{121         \textcolor{comment}{/* To read light sensor */}}
+\DoxyCodeLine{126         \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_a369438ae07e330932fbe19909bf48f21}{readSensorsAndUpdate}}();}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128         \textcolor{comment}{/* Get Methods */}}
+\DoxyCodeLine{129 }
+\DoxyCodeLine{135         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classlight_manager_aff99350c13ac1283fadc8256326436b4}{getMeasuredLight}}();}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{142         \textcolor{keyword}{inline} uint32\_t \mbox{\hyperlink{classlight_manager_a39974c4515ec5bf523a188c9353b2aab}{getExpectedLight}}();}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{149         \textcolor{keyword}{inline} uint16\_t \mbox{\hyperlink{classlight_manager_aa5731b9e77e9eef0e2936fc6709703b6}{getPwmMaxBrightLevel}}();}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{156         \textcolor{keyword}{inline} uint16\_t \mbox{\hyperlink{classlight_manager_a28e05cc9d90485a305ad62cb9dbd0cfe}{getPwmMinBrightLevel}}();}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{163         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classlight_manager_acd8a8e35009a37b3fa7184af512a11dc}{getOperationMode}}();}
+\DoxyCodeLine{164 }
+\DoxyCodeLine{170         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classlight_manager_abb7c8124faaf0e585fa7616dc7c6619b}{getLastAction}}();}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{177         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classlight_manager_ab6aa384a864d6c77723715b571533f37}{getStatus}}();}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179         \textcolor{comment}{/* Set methods */}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{187         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_adcc9897c03de510f885274d05f134b52}{setOperationMode}}(uint8\_t OP);}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{194         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_afde46d4c3fee11ec3e7c5a0fc2d75672}{setMaxBrightLevel}}(uint16\_t value);}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{201         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classlight_manager_acfb6cae634d6c590ecf4f8c9c9e357bb}{setMinBrightLevel}}(uint16\_t value);}
+\DoxyCodeLine{202 \};}
+
+\end{DoxyCode}

@@ -1,5 +1,3 @@
-//TODO: Comment header
-
 #include "supplyManager.h"
 #include "pico/stdio.h"
 #include <stdio.h>

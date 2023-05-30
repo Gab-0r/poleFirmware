@@ -1,0 +1,308 @@
+\hypertarget{pole_firmware_8cpp}{}\doxysection{C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/pole\+Firmware.cpp File Reference}
+\label{pole_firmware_8cpp}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/poleFirmware.cpp@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/poleFirmware.cpp}}
+
+
+Main file of the smart pole firmware. This file initialize the hardware, the operating system and start the scheduler with its tasks.  
+
+
+{\ttfamily \#include $<$Free\+RTOS.\+h$>$}\newline
+{\ttfamily \#include $<$task.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pico/stdlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}event\+\_\+groups.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pico/time.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}light\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}supply\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}smart\+Pole\+Config.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a55f802131dc459dcf807e74de07fb48d}{READ\+\_\+\+ENVIROMENT\+\_\+\+SENSORS\+\_\+\+TASKS\+\_\+\+TRIGGER}}~(1UL $<$$<$ 0\+UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a8ad8cb2ce3abd55fb4406d2214649bcf}{READ\+\_\+\+ONBOARD\+\_\+\+SENSORS\+\_\+\+TASKS\+\_\+\+TRIGGER}}~(1UL $<$$<$ 1UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_afa0aa4c835178ff78f99f47cad8388fb}{READ\+\_\+\+EDGE\+\_\+\+BOARDS\+\_\+\+TASK\+\_\+\+TRIGGER}}~(1UL $<$$<$ 2UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a5e01000f9c61a3c8c3d2c3e90438d84b}{LIGHT\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER}}~(1UL $<$$<$ 3UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_aff9334205f2ab8d26efef23c34228784}{SUPPLY\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER}}~(1UL $<$$<$ 4UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a0085f414b225fabaf69fbcf99d2d6c44}{PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER0}}~(1UL $<$$<$ 5UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a894f4239c222c9c75f233f7687fda7e8}{PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER1}}~(1UL $<$$<$ 6UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a1a9eb20f9ce8728b8d97e0dabc2a7fd8}{PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER2}}~(1UL $<$$<$ 7UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_a5791c30e63ec21045c11c0d887128642}{PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER3}}~(1UL $<$$<$ 8UL)
+\item 
+\#define \mbox{\hyperlink{pole_firmware_8cpp_ac3ccf37d711bc1e6989ef528bf4b38e5}{COM\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER}}~(1UL $<$$<$ 9UL)
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_aa046f9b9b030ee23fa45e603100f9292}{hardware\+Init}} ()
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a4ecc89e1e7b7eb5045b5beeb4ca911f3}{pir\+Triggered}} (uint, uint32\+\_\+t)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a9e1aa2ae5e17204edf0742d2dca474be}{magnetic\+Switch\+ISR}} (uint, uint32\+\_\+t)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a3765925c72d842164bb78570ac55aff8}{OSinit}} ()
+\item 
+int64\+\_\+t \mbox{\hyperlink{pole_firmware_8cpp_ae13c8c3fbb056c54e2e0257731e045e8}{pir\+Off}} (alarm\+\_\+id\+\_\+t, void $\ast$)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_aede02b989904fd35f434adba2f8e636c}{periodic\+Trigger\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a8e7d0a75b51e5759045b75735ddc479c}{read\+Enviroment\+Sensors\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_aef8ae03484b2d1f8e0f10a6207f7baee}{read\+On\+Board\+Sensors\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_ac909f2cbc1f5cb1448964c9859e11903}{read\+Edge\+Boards\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_aca2ee669832bf2c58461f9816e8ed3df}{light\+Manager\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a9d0d4d5058c327ab8c0e9c8cf9671628}{packet\+Manager\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_aee8bca5ea332c301f3fde53ecb453ead}{supply\+Manager\+Task}} (void $\ast$pv\+Parameters)
+\item 
+void \mbox{\hyperlink{pole_firmware_8cpp_a64e83f77d433120c451d75537d03f944}{com\+Manager\+Task}} (void $\ast$pv\+Parameters)
+\item 
+int \mbox{\hyperlink{pole_firmware_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{pole_firmware_8cpp_ac483cab250118f3a1819adbd1179abd6}{system\+Alert}}
+\item 
+bool \mbox{\hyperlink{pole_firmware_8cpp_a7b0400758125948f40b99aca6f4d66ab}{is\+Pir\+Triggered}} = false
+\item 
+alarm\+\_\+id\+\_\+t \mbox{\hyperlink{pole_firmware_8cpp_a2ca5a33e601bd421b8969a3d5f683307}{pir\+Alarm\+Id}} = 0
+\item 
+alarm\+\_\+id\+\_\+t \mbox{\hyperlink{pole_firmware_8cpp_add229bde7cd289794bad9bbbbdcbeedd}{relay\+Release}} = 0
+\item 
+\mbox{\hyperlink{classlight_manager}{light\+Manager}} \mbox{\hyperlink{pole_firmware_8cpp_abd99b015cc0ed24a0668f2f2d9f000bf}{light\+\_\+manager}} (\mbox{\hyperlink{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}{LED\+\_\+\+CTRL\+\_\+\+PIN}})
+\item 
+\mbox{\hyperlink{structligh_data}{ligh\+Data}} \mbox{\hyperlink{pole_firmware_8cpp_a59cbc6589bbaf9c5b77777fe99f05c61}{light\+Manager\+Info}}
+\item 
+\mbox{\hyperlink{classsupply_manager}{supply\+Manager}} \mbox{\hyperlink{pole_firmware_8cpp_ab0743e5ad4eb133854f1d66db26e6081}{supply\+\_\+manager}}
+\item 
+Event\+Group\+Handle\+\_\+t \mbox{\hyperlink{pole_firmware_8cpp_a23235b0baa8a2582eb7db3a681345615}{x\+Event\+Group}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main file of the smart pole firmware. This file initialize the hardware, the operating system and start the scheduler with its tasks. 
+
+\begin{DoxyAuthor}{Author}
+Juan Gabriel Orozco Orozco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/04-\/4
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{pole_firmware_8cpp_ac3ccf37d711bc1e6989ef528bf4b38e5}\label{pole_firmware_8cpp_ac3ccf37d711bc1e6989ef528bf4b38e5}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!COM\_MANAGER\_TASK\_TRIGGER@{COM\_MANAGER\_TASK\_TRIGGER}}
+\index{COM\_MANAGER\_TASK\_TRIGGER@{COM\_MANAGER\_TASK\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{COM\_MANAGER\_TASK\_TRIGGER}{COM\_MANAGER\_TASK\_TRIGGER}}
+{\footnotesize\ttfamily \#define COM\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER~(1UL $<$$<$ 9UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a5e01000f9c61a3c8c3d2c3e90438d84b}\label{pole_firmware_8cpp_a5e01000f9c61a3c8c3d2c3e90438d84b}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!LIGHT\_MANAGER\_TASK\_TRIGGER@{LIGHT\_MANAGER\_TASK\_TRIGGER}}
+\index{LIGHT\_MANAGER\_TASK\_TRIGGER@{LIGHT\_MANAGER\_TASK\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_MANAGER\_TASK\_TRIGGER}{LIGHT\_MANAGER\_TASK\_TRIGGER}}
+{\footnotesize\ttfamily \#define LIGHT\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER~(1UL $<$$<$ 3UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a0085f414b225fabaf69fbcf99d2d6c44}\label{pole_firmware_8cpp_a0085f414b225fabaf69fbcf99d2d6c44}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!PACKET\_MANAGER\_TASK\_TRIGGER0@{PACKET\_MANAGER\_TASK\_TRIGGER0}}
+\index{PACKET\_MANAGER\_TASK\_TRIGGER0@{PACKET\_MANAGER\_TASK\_TRIGGER0}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{PACKET\_MANAGER\_TASK\_TRIGGER0}{PACKET\_MANAGER\_TASK\_TRIGGER0}}
+{\footnotesize\ttfamily \#define PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER0~(1UL $<$$<$ 5UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a894f4239c222c9c75f233f7687fda7e8}\label{pole_firmware_8cpp_a894f4239c222c9c75f233f7687fda7e8}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!PACKET\_MANAGER\_TASK\_TRIGGER1@{PACKET\_MANAGER\_TASK\_TRIGGER1}}
+\index{PACKET\_MANAGER\_TASK\_TRIGGER1@{PACKET\_MANAGER\_TASK\_TRIGGER1}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{PACKET\_MANAGER\_TASK\_TRIGGER1}{PACKET\_MANAGER\_TASK\_TRIGGER1}}
+{\footnotesize\ttfamily \#define PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER1~(1UL $<$$<$ 6UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a1a9eb20f9ce8728b8d97e0dabc2a7fd8}\label{pole_firmware_8cpp_a1a9eb20f9ce8728b8d97e0dabc2a7fd8}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!PACKET\_MANAGER\_TASK\_TRIGGER2@{PACKET\_MANAGER\_TASK\_TRIGGER2}}
+\index{PACKET\_MANAGER\_TASK\_TRIGGER2@{PACKET\_MANAGER\_TASK\_TRIGGER2}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{PACKET\_MANAGER\_TASK\_TRIGGER2}{PACKET\_MANAGER\_TASK\_TRIGGER2}}
+{\footnotesize\ttfamily \#define PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER2~(1UL $<$$<$ 7UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a5791c30e63ec21045c11c0d887128642}\label{pole_firmware_8cpp_a5791c30e63ec21045c11c0d887128642}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!PACKET\_MANAGER\_TASK\_TRIGGER3@{PACKET\_MANAGER\_TASK\_TRIGGER3}}
+\index{PACKET\_MANAGER\_TASK\_TRIGGER3@{PACKET\_MANAGER\_TASK\_TRIGGER3}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{PACKET\_MANAGER\_TASK\_TRIGGER3}{PACKET\_MANAGER\_TASK\_TRIGGER3}}
+{\footnotesize\ttfamily \#define PACKET\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER3~(1UL $<$$<$ 8UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_afa0aa4c835178ff78f99f47cad8388fb}\label{pole_firmware_8cpp_afa0aa4c835178ff78f99f47cad8388fb}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!READ\_EDGE\_BOARDS\_TASK\_TRIGGER@{READ\_EDGE\_BOARDS\_TASK\_TRIGGER}}
+\index{READ\_EDGE\_BOARDS\_TASK\_TRIGGER@{READ\_EDGE\_BOARDS\_TASK\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{READ\_EDGE\_BOARDS\_TASK\_TRIGGER}{READ\_EDGE\_BOARDS\_TASK\_TRIGGER}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+EDGE\+\_\+\+BOARDS\+\_\+\+TASK\+\_\+\+TRIGGER~(1UL $<$$<$ 2UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a55f802131dc459dcf807e74de07fb48d}\label{pole_firmware_8cpp_a55f802131dc459dcf807e74de07fb48d}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER@{READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER}}
+\index{READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER@{READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER}{READ\_ENVIROMENT\_SENSORS\_TASKS\_TRIGGER}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+ENVIROMENT\+\_\+\+SENSORS\+\_\+\+TASKS\+\_\+\+TRIGGER~(1UL $<$$<$ 0\+UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a8ad8cb2ce3abd55fb4406d2214649bcf}\label{pole_firmware_8cpp_a8ad8cb2ce3abd55fb4406d2214649bcf}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER@{READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER}}
+\index{READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER@{READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER}{READ\_ONBOARD\_SENSORS\_TASKS\_TRIGGER}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+ONBOARD\+\_\+\+SENSORS\+\_\+\+TASKS\+\_\+\+TRIGGER~(1UL $<$$<$ 1UL)}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aff9334205f2ab8d26efef23c34228784}\label{pole_firmware_8cpp_aff9334205f2ab8d26efef23c34228784}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!SUPPLY\_MANAGER\_TASK\_TRIGGER@{SUPPLY\_MANAGER\_TASK\_TRIGGER}}
+\index{SUPPLY\_MANAGER\_TASK\_TRIGGER@{SUPPLY\_MANAGER\_TASK\_TRIGGER}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{SUPPLY\_MANAGER\_TASK\_TRIGGER}{SUPPLY\_MANAGER\_TASK\_TRIGGER}}
+{\footnotesize\ttfamily \#define SUPPLY\+\_\+\+MANAGER\+\_\+\+TASK\+\_\+\+TRIGGER~(1UL $<$$<$ 4UL)}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{pole_firmware_8cpp_a64e83f77d433120c451d75537d03f944}\label{pole_firmware_8cpp_a64e83f77d433120c451d75537d03f944}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!comManagerTask@{comManagerTask}}
+\index{comManagerTask@{comManagerTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{comManagerTask()}{comManagerTask()}}
+{\footnotesize\ttfamily void com\+Manager\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aa046f9b9b030ee23fa45e603100f9292}\label{pole_firmware_8cpp_aa046f9b9b030ee23fa45e603100f9292}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!hardwareInit@{hardwareInit}}
+\index{hardwareInit@{hardwareInit}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{hardwareInit()}{hardwareInit()}}
+{\footnotesize\ttfamily void hardware\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aca2ee669832bf2c58461f9816e8ed3df}\label{pole_firmware_8cpp_aca2ee669832bf2c58461f9816e8ed3df}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!lightManagerTask@{lightManagerTask}}
+\index{lightManagerTask@{lightManagerTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{lightManagerTask()}{lightManagerTask()}}
+{\footnotesize\ttfamily void light\+Manager\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a9e1aa2ae5e17204edf0742d2dca474be}\label{pole_firmware_8cpp_a9e1aa2ae5e17204edf0742d2dca474be}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!magneticSwitchISR@{magneticSwitchISR}}
+\index{magneticSwitchISR@{magneticSwitchISR}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{magneticSwitchISR()}{magneticSwitchISR()}}
+{\footnotesize\ttfamily void magnetic\+Switch\+ISR (\begin{DoxyParamCaption}\item[{uint}]{,  }\item[{uint32\+\_\+t}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{pole_firmware_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!main@{main}}
+\index{main@{main}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a3765925c72d842164bb78570ac55aff8}\label{pole_firmware_8cpp_a3765925c72d842164bb78570ac55aff8}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!OSinit@{OSinit}}
+\index{OSinit@{OSinit}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{OSinit()}{OSinit()}}
+{\footnotesize\ttfamily void OSinit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a9d0d4d5058c327ab8c0e9c8cf9671628}\label{pole_firmware_8cpp_a9d0d4d5058c327ab8c0e9c8cf9671628}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!packetManagerTask@{packetManagerTask}}
+\index{packetManagerTask@{packetManagerTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{packetManagerTask()}{packetManagerTask()}}
+{\footnotesize\ttfamily void packet\+Manager\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aede02b989904fd35f434adba2f8e636c}\label{pole_firmware_8cpp_aede02b989904fd35f434adba2f8e636c}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!periodicTriggerTask@{periodicTriggerTask}}
+\index{periodicTriggerTask@{periodicTriggerTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{periodicTriggerTask()}{periodicTriggerTask()}}
+{\footnotesize\ttfamily void periodic\+Trigger\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_ae13c8c3fbb056c54e2e0257731e045e8}\label{pole_firmware_8cpp_ae13c8c3fbb056c54e2e0257731e045e8}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!pirOff@{pirOff}}
+\index{pirOff@{pirOff}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{pirOff()}{pirOff()}}
+{\footnotesize\ttfamily int64\+\_\+t pir\+Off (\begin{DoxyParamCaption}\item[{alarm\+\_\+id\+\_\+t}]{,  }\item[{void $\ast$}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a4ecc89e1e7b7eb5045b5beeb4ca911f3}\label{pole_firmware_8cpp_a4ecc89e1e7b7eb5045b5beeb4ca911f3}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!pirTriggered@{pirTriggered}}
+\index{pirTriggered@{pirTriggered}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{pirTriggered()}{pirTriggered()}}
+{\footnotesize\ttfamily void pir\+Triggered (\begin{DoxyParamCaption}\item[{uint}]{,  }\item[{uint32\+\_\+t}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_ac909f2cbc1f5cb1448964c9859e11903}\label{pole_firmware_8cpp_ac909f2cbc1f5cb1448964c9859e11903}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!readEdgeBoardsTask@{readEdgeBoardsTask}}
+\index{readEdgeBoardsTask@{readEdgeBoardsTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{readEdgeBoardsTask()}{readEdgeBoardsTask()}}
+{\footnotesize\ttfamily void read\+Edge\+Boards\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a8e7d0a75b51e5759045b75735ddc479c}\label{pole_firmware_8cpp_a8e7d0a75b51e5759045b75735ddc479c}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!readEnviromentSensorsTask@{readEnviromentSensorsTask}}
+\index{readEnviromentSensorsTask@{readEnviromentSensorsTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{readEnviromentSensorsTask()}{readEnviromentSensorsTask()}}
+{\footnotesize\ttfamily void read\+Enviroment\+Sensors\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aef8ae03484b2d1f8e0f10a6207f7baee}\label{pole_firmware_8cpp_aef8ae03484b2d1f8e0f10a6207f7baee}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!readOnBoardSensorsTask@{readOnBoardSensorsTask}}
+\index{readOnBoardSensorsTask@{readOnBoardSensorsTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{readOnBoardSensorsTask()}{readOnBoardSensorsTask()}}
+{\footnotesize\ttfamily void read\+On\+Board\+Sensors\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_aee8bca5ea332c301f3fde53ecb453ead}\label{pole_firmware_8cpp_aee8bca5ea332c301f3fde53ecb453ead}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!supplyManagerTask@{supplyManagerTask}}
+\index{supplyManagerTask@{supplyManagerTask}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{supplyManagerTask()}{supplyManagerTask()}}
+{\footnotesize\ttfamily void supply\+Manager\+Task (\begin{DoxyParamCaption}\item[{void $\ast$}]{pv\+Parameters }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{pole_firmware_8cpp_a7b0400758125948f40b99aca6f4d66ab}\label{pole_firmware_8cpp_a7b0400758125948f40b99aca6f4d66ab}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!isPirTriggered@{isPirTriggered}}
+\index{isPirTriggered@{isPirTriggered}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{isPirTriggered}{isPirTriggered}}
+{\footnotesize\ttfamily bool is\+Pir\+Triggered = false}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_abd99b015cc0ed24a0668f2f2d9f000bf}\label{pole_firmware_8cpp_abd99b015cc0ed24a0668f2f2d9f000bf}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!light\_manager@{light\_manager}}
+\index{light\_manager@{light\_manager}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{light\_manager}{light\_manager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlight_manager}{light\+Manager}} light\+\_\+manager(\mbox{\hyperlink{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}{LED\+\_\+\+CTRL\+\_\+\+PIN}}) (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}{LED\+\_\+\+CTRL\+\_\+\+PIN}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a59cbc6589bbaf9c5b77777fe99f05c61}\label{pole_firmware_8cpp_a59cbc6589bbaf9c5b77777fe99f05c61}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!lightManagerInfo@{lightManagerInfo}}
+\index{lightManagerInfo@{lightManagerInfo}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{lightManagerInfo}{lightManagerInfo}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structligh_data}{ligh\+Data}} light\+Manager\+Info}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a2ca5a33e601bd421b8969a3d5f683307}\label{pole_firmware_8cpp_a2ca5a33e601bd421b8969a3d5f683307}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!pirAlarmId@{pirAlarmId}}
+\index{pirAlarmId@{pirAlarmId}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{pirAlarmId}{pirAlarmId}}
+{\footnotesize\ttfamily alarm\+\_\+id\+\_\+t pir\+Alarm\+Id = 0}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_add229bde7cd289794bad9bbbbdcbeedd}\label{pole_firmware_8cpp_add229bde7cd289794bad9bbbbdcbeedd}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!relayRelease@{relayRelease}}
+\index{relayRelease@{relayRelease}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{relayRelease}{relayRelease}}
+{\footnotesize\ttfamily alarm\+\_\+id\+\_\+t relay\+Release = 0}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_ab0743e5ad4eb133854f1d66db26e6081}\label{pole_firmware_8cpp_ab0743e5ad4eb133854f1d66db26e6081}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!supply\_manager@{supply\_manager}}
+\index{supply\_manager@{supply\_manager}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{supply\_manager}{supply\_manager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classsupply_manager}{supply\+Manager}} supply\+\_\+manager}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_ac483cab250118f3a1819adbd1179abd6}\label{pole_firmware_8cpp_ac483cab250118f3a1819adbd1179abd6}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!systemAlert@{systemAlert}}
+\index{systemAlert@{systemAlert}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{systemAlert}{systemAlert}}
+{\footnotesize\ttfamily uint8\+\_\+t system\+Alert}
+
+\mbox{\Hypertarget{pole_firmware_8cpp_a23235b0baa8a2582eb7db3a681345615}\label{pole_firmware_8cpp_a23235b0baa8a2582eb7db3a681345615}} 
+\index{poleFirmware.cpp@{poleFirmware.cpp}!xEventGroup@{xEventGroup}}
+\index{xEventGroup@{xEventGroup}!poleFirmware.cpp@{poleFirmware.cpp}}
+\doxysubsubsection{\texorpdfstring{xEventGroup}{xEventGroup}}
+{\footnotesize\ttfamily Event\+Group\+Handle\+\_\+t x\+Event\+Group}
+

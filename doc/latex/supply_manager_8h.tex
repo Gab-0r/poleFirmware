@@ -1,0 +1,116 @@
+\hypertarget{supply_manager_8h}{}\doxysection{C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/supply\+Manager/lib/supply\+Manager.h File Reference}
+\label{supply_manager_8h}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.h@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.h}}
+
+
+This class manage the different power supplies, measure their power and select the appropiate one. In addition the class can report power events that affect the system.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pico/stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pico/time.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classsupply_manager}{supply\+Manager}}
+\begin{DoxyCompactList}\small\item\em This class manage the different power supplies, measure their power and select the appropiate one. In addition the class can report power events that affect the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int64\+\_\+t \mbox{\hyperlink{supply_manager_8h_acea7e066d6c0ff8c7b5ac50caadf7e2b}{close\+Relay}} (alarm\+\_\+id\+\_\+t id, void $\ast$relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Close a relay. This funciton need to be call from an alarm interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supply_manager_8h_a2c9041344c5be01d783a5901bb4d6f96}{close\+Relay}} (uint16\+\_\+t relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Close a relay. This function cannot be call from an alarm interrupt. \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{supply_manager_8h_ab43274f8adb6cf84b06cff67a14c6a24}{release\+Relay}} (alarm\+\_\+id\+\_\+t id, void $\ast$relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Release a relay. This function need to be call from an alarm interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supply_manager_8h_a76c8d9f78e97a10348a0a95a342a846f}{release\+Relay}} (uint16\+\_\+t relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Release a relay. This function cannot be call from an alarm interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class manage the different power supplies, measure their power and select the appropiate one. In addition the class can report power events that affect the system. 
+
+\begin{DoxyAuthor}{Author}
+Juan Gabriel Orozco Orozco 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2023-\/04-\/30
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2023 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{supply_manager_8h_acea7e066d6c0ff8c7b5ac50caadf7e2b}\label{supply_manager_8h_acea7e066d6c0ff8c7b5ac50caadf7e2b}} 
+\index{supplyManager.h@{supplyManager.h}!closeRelay@{closeRelay}}
+\index{closeRelay@{closeRelay}!supplyManager.h@{supplyManager.h}}
+\doxysubsubsection{\texorpdfstring{closeRelay()}{closeRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int64\+\_\+t close\+Relay (\begin{DoxyParamCaption}\item[{alarm\+\_\+id\+\_\+t}]{id,  }\item[{void $\ast$}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Close a relay. This funciton need to be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Alarm id \\
+\hline
+{\em relay\+Pin} & Relay pin to close \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int64\+\_\+t \texorpdfstring{$<$}{<}0 to reschedule the same alarm this many us from the time the alarm was previously sccheduled to fire, \texorpdfstring{$>$}{>}0 to reschedule the same alarm this many us from the time this method returns, 0 to not reschdeule the alarm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{supply_manager_8h_a2c9041344c5be01d783a5901bb4d6f96}\label{supply_manager_8h_a2c9041344c5be01d783a5901bb4d6f96}} 
+\index{supplyManager.h@{supplyManager.h}!closeRelay@{closeRelay}}
+\index{closeRelay@{closeRelay}!supplyManager.h@{supplyManager.h}}
+\doxysubsubsection{\texorpdfstring{closeRelay()}{closeRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void close\+Relay (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Close a relay. This function cannot be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em relay\+Pin} & Relay pin to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{supply_manager_8h_ab43274f8adb6cf84b06cff67a14c6a24}\label{supply_manager_8h_ab43274f8adb6cf84b06cff67a14c6a24}} 
+\index{supplyManager.h@{supplyManager.h}!releaseRelay@{releaseRelay}}
+\index{releaseRelay@{releaseRelay}!supplyManager.h@{supplyManager.h}}
+\doxysubsubsection{\texorpdfstring{releaseRelay()}{releaseRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int64\+\_\+t release\+Relay (\begin{DoxyParamCaption}\item[{alarm\+\_\+id\+\_\+t}]{id,  }\item[{void $\ast$}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Release a relay. This function need to be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Alarm id \\
+\hline
+{\em relay\+Pin} & Relay pin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$<$}{<}0 to reschedule the same alarm this many us from the time the alarm was previously sccheduled to fire, \texorpdfstring{$>$}{>}0 to reschedule the same alarm this many us from the time this method returns, 0 to not reschdeule the alarm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{supply_manager_8h_a76c8d9f78e97a10348a0a95a342a846f}\label{supply_manager_8h_a76c8d9f78e97a10348a0a95a342a846f}} 
+\index{supplyManager.h@{supplyManager.h}!releaseRelay@{releaseRelay}}
+\index{releaseRelay@{releaseRelay}!supplyManager.h@{supplyManager.h}}
+\doxysubsubsection{\texorpdfstring{releaseRelay()}{releaseRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void release\+Relay (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Release a relay. This function cannot be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em relay\+Pin} & Relay pin \\
+\hline
+\end{DoxyParams}

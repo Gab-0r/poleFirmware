@@ -1,0 +1,281 @@
+\hypertarget{classlight_manager}{}\doxysection{light\+Manager Class Reference}
+\label{classlight_manager}\index{lightManager@{lightManager}}
+
+
+This class manage the lamp brightness based in many events, either movement or power. Also, check that the brightness delivered by the lamp is correct.  
+
+
+
+
+{\ttfamily \#include $<$light\+Manager.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlight_manager_aace121fd6cd39e3074cf62bfabb35f56}{light\+Manager}} (uint16\+\_\+t pwm\+Pin\+\_\+)
+\begin{DoxyCompactList}\small\item\em Construct a new light Manager object. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_ab0be6cf23006ac76c3a51d4ade4039b2}{light\+Feed\+Back\+Check}} ()
+\begin{DoxyCompactList}\small\item\em Determine if the lighing levels are correct for the curren PWM duty cycle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlight_manager_a22f898b7f1a49c7cba61cff04d75b142}{init\+PWM}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the PWM with parameters specified in the smar\+Pole\+Config file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlight_manager_ad49ef31364fff1dfa88ae3d226b971c4}{set\+PWM}} (uint8\+\_\+t event)
+\begin{DoxyCompactList}\small\item\em Change the PWM duty cycle based on an event. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classlight_manager_a04197263cc800c59c9ea9cd3b6ef05e8}{get\+\_\+random\+\_\+bit}} ()
+\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_a7fe7fae478c975d7e0b963b8b7540774}{get\+Random\+Number}} ()
+\item 
+void \mbox{\hyperlink{classlight_manager_a369438ae07e330932fbe19909bf48f21}{read\+Sensors\+And\+Update}} ()
+\begin{DoxyCompactList}\small\item\em Read light sensor and update the current bright atribute. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_aff99350c13ac1283fadc8256326436b4}{get\+Measured\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Get the Measured Light value. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{classlight_manager_a39974c4515ec5bf523a188c9353b2aab}{get\+Expected\+Light}} ()
+\begin{DoxyCompactList}\small\item\em Get the Expected Light value. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{classlight_manager_aa5731b9e77e9eef0e2936fc6709703b6}{get\+Pwm\+Max\+Bright\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Get the Pwm Max Bright Level value. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{classlight_manager_a28e05cc9d90485a305ad62cb9dbd0cfe}{get\+Pwm\+Min\+Bright\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Get the Pwm Min Bright Level value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_acd8a8e35009a37b3fa7184af512a11dc}{get\+Operation\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Get the Operation Mode value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_abb7c8124faaf0e585fa7616dc7c6619b}{get\+Last\+Action}} ()
+\begin{DoxyCompactList}\small\item\em Get the Last Action value. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{classlight_manager_ab6aa384a864d6c77723715b571533f37}{get\+Status}} ()
+\begin{DoxyCompactList}\small\item\em Get the Status value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlight_manager_adcc9897c03de510f885274d05f134b52}{set\+Operation\+Mode}} (uint8\+\_\+t OP)
+\begin{DoxyCompactList}\small\item\em eceive an operation mode and change the maximun and minimun light levels for the operation mode. This levels are defined in the smart\+Pole\+Config file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlight_manager_afde46d4c3fee11ec3e7c5a0fc2d75672}{set\+Max\+Bright\+Level}} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Set the Max Bright Level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlight_manager_acfb6cae634d6c590ecf4f8c9c9e357bb}{set\+Min\+Bright\+Level}} (uint16\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Set the Min Bright Level. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class manage the lamp brightness based in many events, either movement or power. Also, check that the brightness delivered by the lamp is correct. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight_manager_aace121fd6cd39e3074cf62bfabb35f56}\label{classlight_manager_aace121fd6cd39e3074cf62bfabb35f56}} 
+\index{lightManager@{lightManager}!lightManager@{lightManager}}
+\index{lightManager@{lightManager}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{lightManager()}{lightManager()}}
+{\footnotesize\ttfamily light\+Manager\+::light\+Manager (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{pwm\+Pin\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Construct a new light Manager object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pwm\+Pin\+\_\+} & Pin where the PWM pin of the lamp dimmer is attached \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight_manager_a04197263cc800c59c9ea9cd3b6ef05e8}\label{classlight_manager_a04197263cc800c59c9ea9cd3b6ef05e8}} 
+\index{lightManager@{lightManager}!get\_random\_bit@{get\_random\_bit}}
+\index{get\_random\_bit@{get\_random\_bit}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{get\_random\_bit()}{get\_random\_bit()}}
+{\footnotesize\ttfamily bool light\+Manager\+::get\+\_\+random\+\_\+bit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classlight_manager_a39974c4515ec5bf523a188c9353b2aab}\label{classlight_manager_a39974c4515ec5bf523a188c9353b2aab}} 
+\index{lightManager@{lightManager}!getExpectedLight@{getExpectedLight}}
+\index{getExpectedLight@{getExpectedLight}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getExpectedLight()}{getExpectedLight()}}
+{\footnotesize\ttfamily uint32\+\_\+t light\+Manager\+::get\+Expected\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Expected Light value. 
+
+\begin{DoxyReturn}{Returns}
+uint32\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_abb7c8124faaf0e585fa7616dc7c6619b}\label{classlight_manager_abb7c8124faaf0e585fa7616dc7c6619b}} 
+\index{lightManager@{lightManager}!getLastAction@{getLastAction}}
+\index{getLastAction@{getLastAction}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getLastAction()}{getLastAction()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::get\+Last\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Last Action value. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_aff99350c13ac1283fadc8256326436b4}\label{classlight_manager_aff99350c13ac1283fadc8256326436b4}} 
+\index{lightManager@{lightManager}!getMeasuredLight@{getMeasuredLight}}
+\index{getMeasuredLight@{getMeasuredLight}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getMeasuredLight()}{getMeasuredLight()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::get\+Measured\+Light (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Measured Light value. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_acd8a8e35009a37b3fa7184af512a11dc}\label{classlight_manager_acd8a8e35009a37b3fa7184af512a11dc}} 
+\index{lightManager@{lightManager}!getOperationMode@{getOperationMode}}
+\index{getOperationMode@{getOperationMode}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getOperationMode()}{getOperationMode()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::get\+Operation\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Operation Mode value. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_aa5731b9e77e9eef0e2936fc6709703b6}\label{classlight_manager_aa5731b9e77e9eef0e2936fc6709703b6}} 
+\index{lightManager@{lightManager}!getPwmMaxBrightLevel@{getPwmMaxBrightLevel}}
+\index{getPwmMaxBrightLevel@{getPwmMaxBrightLevel}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getPwmMaxBrightLevel()}{getPwmMaxBrightLevel()}}
+{\footnotesize\ttfamily uint16\+\_\+t light\+Manager\+::get\+Pwm\+Max\+Bright\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Pwm Max Bright Level value. 
+
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_a28e05cc9d90485a305ad62cb9dbd0cfe}\label{classlight_manager_a28e05cc9d90485a305ad62cb9dbd0cfe}} 
+\index{lightManager@{lightManager}!getPwmMinBrightLevel@{getPwmMinBrightLevel}}
+\index{getPwmMinBrightLevel@{getPwmMinBrightLevel}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getPwmMinBrightLevel()}{getPwmMinBrightLevel()}}
+{\footnotesize\ttfamily uint16\+\_\+t light\+Manager\+::get\+Pwm\+Min\+Bright\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Pwm Min Bright Level value. 
+
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_a7fe7fae478c975d7e0b963b8b7540774}\label{classlight_manager_a7fe7fae478c975d7e0b963b8b7540774}} 
+\index{lightManager@{lightManager}!getRandomNumber@{getRandomNumber}}
+\index{getRandomNumber@{getRandomNumber}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getRandomNumber()}{getRandomNumber()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::get\+Random\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classlight_manager_ab6aa384a864d6c77723715b571533f37}\label{classlight_manager_ab6aa384a864d6c77723715b571533f37}} 
+\index{lightManager@{lightManager}!getStatus@{getStatus}}
+\index{getStatus@{getStatus}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{getStatus()}{getStatus()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::get\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Status value. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_a22f898b7f1a49c7cba61cff04d75b142}\label{classlight_manager_a22f898b7f1a49c7cba61cff04d75b142}} 
+\index{lightManager@{lightManager}!initPWM@{initPWM}}
+\index{initPWM@{initPWM}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{initPWM()}{initPWM()}}
+{\footnotesize\ttfamily void light\+Manager\+::init\+PWM (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the PWM with parameters specified in the smar\+Pole\+Config file. 
+
+\mbox{\Hypertarget{classlight_manager_ab0be6cf23006ac76c3a51d4ade4039b2}\label{classlight_manager_ab0be6cf23006ac76c3a51d4ade4039b2}} 
+\index{lightManager@{lightManager}!lightFeedBackCheck@{lightFeedBackCheck}}
+\index{lightFeedBackCheck@{lightFeedBackCheck}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{lightFeedBackCheck()}{lightFeedBackCheck()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+Manager\+::light\+Feed\+Back\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Determine if the lighing levels are correct for the curren PWM duty cycle. 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Return the state of the lamp brightness 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlight_manager_a369438ae07e330932fbe19909bf48f21}\label{classlight_manager_a369438ae07e330932fbe19909bf48f21}} 
+\index{lightManager@{lightManager}!readSensorsAndUpdate@{readSensorsAndUpdate}}
+\index{readSensorsAndUpdate@{readSensorsAndUpdate}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{readSensorsAndUpdate()}{readSensorsAndUpdate()}}
+{\footnotesize\ttfamily void light\+Manager\+::read\+Sensors\+And\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read light sensor and update the current bright atribute. 
+
+\mbox{\Hypertarget{classlight_manager_afde46d4c3fee11ec3e7c5a0fc2d75672}\label{classlight_manager_afde46d4c3fee11ec3e7c5a0fc2d75672}} 
+\index{lightManager@{lightManager}!setMaxBrightLevel@{setMaxBrightLevel}}
+\index{setMaxBrightLevel@{setMaxBrightLevel}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{setMaxBrightLevel()}{setMaxBrightLevel()}}
+{\footnotesize\ttfamily void light\+Manager\+::set\+Max\+Bright\+Level (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Max Bright Level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlight_manager_acfb6cae634d6c590ecf4f8c9c9e357bb}\label{classlight_manager_acfb6cae634d6c590ecf4f8c9c9e357bb}} 
+\index{lightManager@{lightManager}!setMinBrightLevel@{setMinBrightLevel}}
+\index{setMinBrightLevel@{setMinBrightLevel}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{setMinBrightLevel()}{setMinBrightLevel()}}
+{\footnotesize\ttfamily void light\+Manager\+::set\+Min\+Bright\+Level (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Min Bright Level. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Value to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlight_manager_adcc9897c03de510f885274d05f134b52}\label{classlight_manager_adcc9897c03de510f885274d05f134b52}} 
+\index{lightManager@{lightManager}!setOperationMode@{setOperationMode}}
+\index{setOperationMode@{setOperationMode}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{setOperationMode()}{setOperationMode()}}
+{\footnotesize\ttfamily void light\+Manager\+::set\+Operation\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{OP }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+eceive an operation mode and change the maximun and minimun light levels for the operation mode. This levels are defined in the smart\+Pole\+Config file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em OP} & Operation mode \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classlight_manager_ad49ef31364fff1dfa88ae3d226b971c4}\label{classlight_manager_ad49ef31364fff1dfa88ae3d226b971c4}} 
+\index{lightManager@{lightManager}!setPWM@{setPWM}}
+\index{setPWM@{setPWM}!lightManager@{lightManager}}
+\doxysubsubsection{\texorpdfstring{setPWM()}{setPWM()}}
+{\footnotesize\ttfamily void light\+Manager\+::set\+PWM (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{event }\end{DoxyParamCaption})}
+
+
+
+Change the PWM duty cycle based on an event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event detected\\
+\hline
+\end{DoxyParams}
+Change the PWM duty cycle based on an event
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & Event detected \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/light\+Manager/lib/\mbox{\hyperlink{light_manager_8h}{light\+Manager.\+h}}\item 
+C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/light\+Manager/lib/\mbox{\hyperlink{light_manager_8cpp}{light\+Manager.\+cpp}}\end{DoxyCompactItemize}

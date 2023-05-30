@@ -1,69 +1,116 @@
 /**
- * Light Manager Class
- * By Juan Gabriel Orozco Orozco - 2023
+ * @file lightManager.h
+ * @author Juan Gabriel Orozco Orozco
+ * @brief This class manage the lamp brightness based in many events, either movement or power. Also, check
+ * that the brightness delivered by the lamp is correct.
+ * @version 0.1
+ * @date 2023-04-20
  * 
- * This class manages the light levels based on a given event, given
- * order or a mode operation of the system. The light levels are controlled by
- * a PWM pin that is specfied when the class is instantiate. This file contains the
- * function definition for the class.
+ * @copyright Copyright (c) 2023
+ * 
  */
 
 #include <stdio.h>
 #include "pico/stdlib.h"
 
+
+/**
+ * @brief This class manage the lamp brightness based in many events, either movement or power. Also, check
+ * that the brightness delivered by the lamp is correct.
+ */
 class lightManager{
 
     private:
 
-        /* Light levels measured by light sensor */
+        /**
+         * @brief Light levels measured by light sensor
+         * 
+         */
         uint8_t measuredLight;
 
-        /* Light level expected for the current PWM duty cycle */
+        /**
+         * @brief Light level expected for the current PWM duty cycle
+         * 
+         */
         uint32_t expectedLight;
 
-        /* Pin for the lamp PWM control signal */
+        /**
+         * @brief Pin for the lamp PWM control signal
+         * 
+         */
         uint8_t pwmPin;
 
-        /* PWM slice to use */
+        /**
+         * @brief PWM slice to use
+         * 
+         */
         uint pwmSlice;
 
-        /* PWM channel to use*/
+        /**
+         * @brief PWM channel to use
+         * 
+         */
         uint pwmChannel;
         
-        /* Max PWM level */
+        /**
+         * @brief Max PWM level
+         * 
+         */
         uint16_t pwmMaxBrightLevel;
 
-        /* Min PWM level */
+        /**
+         * @brief Min PWM level
+         * 
+         */
         uint16_t pwmMinBrightLevel;
 
-        /* Operation mode */
+        /**
+         * @brief Operation mode 
+         * 
+         */
         uint8_t operationMode; 
         
-        /* Last control action*/
+        /**
+         * @brief Last control action
+         * 
+         */
         uint8_t lastAction;
 
-        /* State */
+        /**
+         * @brief State
+         * 
+         */
         uint8_t status;
 
     public:
-
-        /*! \brief Class constructor 
-        *   \param pwmPin_ The lighting control pin for the lamp */
+    
+       /**
+        * @brief Construct a new light Manager object
+        * 
+        * @param pwmPin_ Pin where the PWM pin of the lamp dimmer is attached
+        */
         lightManager(uint16_t pwmPin_);
 
-        /*! \brief Determine if the lighting levels are correct for the current PWM duty cycle
-         *  
-         *  \param measuredLight Light levels given by the lamp
-         *  \return Lamp operation state
-         * 
+       /**
+        * @brief Determine if the lighing levels are correct for the curren PWM duty cycle
+        * 
+        * @return uint8_t Return the state of the lamp brightness
         */
         uint8_t lightFeedBackCheck();
 
-        /*! \brief Initialize the PWM with parameters specified in the smarPoleConfig file */
+        /**
+         * @brief Initialize the PWM with parameters specified in the smarPoleConfig file
+         */
         void initPWM();
 
         /*! \brief Change the PWM duty cycle based on an event 
          *  \param event Event detected
+        */
+
+       /**
+        * @brief Change the PWM duty cycle based on an event
+        * 
+        * @param event Event detected
         */
         void setPWM(uint8_t event);
 
@@ -72,26 +119,84 @@ class lightManager{
         uint8_t getRandomNumber();
 
         /* To read light sensor */
+        /**
+         * @brief Read light sensor  and update the current bright atribute
+         * 
+         */
         void readSensorsAndUpdate();
 
         /* Get Methods */
 
+        /**
+         * @brief Get the Measured Light value
+         * 
+         * @return uint8_t 
+         */
         inline uint8_t getMeasuredLight();
+
+        /**
+         * @brief Get the Expected Light value
+         * 
+         * @return uint32_t 
+         */
         inline uint32_t getExpectedLight();
+
+        /**
+         * @brief Get the Pwm Max Bright Level value
+         * 
+         * @return uint16_t 
+         */
         inline uint16_t getPwmMaxBrightLevel();
+
+        /**
+         * @brief Get the Pwm Min Bright Level value
+         * 
+         * @return uint16_t 
+         */
         inline uint16_t getPwmMinBrightLevel();
+
+        /**
+         * @brief Get the Operation Mode value
+         * 
+         * @return uint8_t 
+         */
         inline uint8_t getOperationMode();
+
+        /**
+         * @brief Get the Last Action value
+         * 
+         * @return uint8_t 
+         */
         inline uint8_t getLastAction();
+
+        /**
+         * @brief Get the Status value
+         * 
+         * @return uint8_t 
+         */
         inline uint8_t getStatus();
 
         /* Set methods */
 
-        /*! \brief Receive an operation mode and change the maximun and minimun light levels
+        /**
+         * @brief eceive an operation mode and change the maximun and minimun light levels
         * for the operation mode. This levels are defined in the smartPoleConfig file
-        *   \param OP Operation mode
-        */
+         * 
+         * @param OP Operation mode
+         */
         inline void setOperationMode(uint8_t OP);
 
+        /**
+         * @brief Set the Max Bright Level
+         * 
+         * @param value Value to set
+         */
         inline void setMaxBrightLevel(uint16_t value);
+
+        /**
+         * @brief Set the Min Bright Level
+         * 
+         * @param value Value to set
+         */
         inline void setMinBrightLevel(uint16_t value);
 };

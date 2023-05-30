@@ -1,0 +1,371 @@
+\hypertarget{smart_pole_config_8h}{}\doxysection{C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/smart\+Pole\+Config.h File Reference}
+\label{smart_pole_config_8h}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/smartPoleConfig.h@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/smartPoleConfig.h}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structligh_data}{ligh\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a912868efa92126901849f6bd39d14c9b}{PIR\+\_\+\+SENSOR\+\_\+\+PIN}}~(uint16\+\_\+t)15U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}{LED\+\_\+\+CTRL\+\_\+\+PIN}}~(uint16\+\_\+t)7U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_accd538ce81a64892e007f80ac354fd78}{GRID\+\_\+\+SUPPLY\+\_\+\+RELAY}}~(uint16\+\_\+t)22U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a5da03d43da4594a498f23801bbfe345b}{BATTERY\+\_\+\+SUPPLY\+\_\+\+RELAY}}~(uint16\+\_\+t)21U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a98d9e1aeb0ef1a88921f519859d9ca43}{SOLAR\+\_\+\+SUPPLY\+\_\+\+RELAY}}~(uint16\+\_\+t)20U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a0100203590d1f2db84211b313cae17d2}{MAGNETIC\+\_\+\+SWITCH\+\_\+\+PIN}}~(uint16\+\_\+t)16U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a4af7117b377b397fe74166aab85e6a9c}{DEBUGLOG\+\_\+\+MODE}}~1
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_ae73c321abdbc6abca15185bac9a71efa}{PERIOD\+\_\+\+TRIGGER\+\_\+\+TASK}}~10000\+UL
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a412f365df935289e707186d6c4944d9b}{MAX\+\_\+\+BRIGHT\+\_\+\+TIME}}~(uint32\+\_\+t)10000U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a7e32bc1c0a3b69c47492d8431e71adb2}{MAX\+\_\+\+BRIGHT\+\_\+\+DUTY}}~99U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a9915f733c040e4de03f214acfd1f3c8b}{MIN\+\_\+\+BRIGHT\+\_\+\+DUTY}}~20U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_acd60137767be8fc28b684bf2d0aeb48f}{MAX\+\_\+\+BRIGHT\+\_\+\+ENERGY\+\_\+\+SAVING\+\_\+\+DUTY}}~60U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a8e1f5e33a0296ffd33d650dead320cdf}{MIN\+\_\+\+BRIGHT\+\_\+\+ENERGY\+\_\+\+SAVING\+\_\+\+DUTY}}~20U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_aca55403974e5537d4c54143337d89d9f}{MAX\+\_\+\+BRIGHT\+\_\+\+EMERGENCY\+\_\+\+DUTY}}~30U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a8f18fd70bb2664c10e7590b4fadea5e0}{MIN\+\_\+\+BRIGHT\+\_\+\+EMERGENCY\+\_\+\+DUTY}}~30U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_ae8a1848a8abb3223190ecded8024aa7d}{LAMP\+\_\+\+PWM\+\_\+\+FREQUENCY}}~30000U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_ac89cf9dbb29f3b4d23ab7ee948f7531a}{LAMP\+\_\+\+PWM\+\_\+\+WRAP}}~4167U
+\item 
+\#define \mbox{\hyperlink{smart_pole_config_8h_a7c808633c4558d3817444b4426393fac}{RELAY\+\_\+\+RELEASE\+\_\+\+TIME}}~5000\+UL
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structligh_data}{ligh\+Data}} \mbox{\hyperlink{smart_pole_config_8h_a139a8299be42806ad4cb382330cd8d2a}{light\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24}{OP\+\_\+\+MODE}} \{ \mbox{\hyperlink{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24a40a71b2d40ad7ef49b7e28e422ae351e}{NORMAL\+\_\+\+OPERATION}}
+, \mbox{\hyperlink{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24aca6b876d281ae029d122953dd356b30f}{POWER\+\_\+\+SAVING}}
+, \mbox{\hyperlink{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24af93f65583dbb61806be08c2ba787e74e}{EMERGENCY\+\_\+\+OPERATION}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9}{SENS\+\_\+\+EVENTS}} \{ \mbox{\hyperlink{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a2488fc64c820d6e5040ae6839a6d8506}{MOVEMENT\+\_\+\+DETECTED}}
+, \mbox{\hyperlink{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a4d56177b6a2b746f93d162e92906a800}{NO\+\_\+\+MOVEMENT}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42}{SYSTEM\+\_\+\+ALERTS}} \{ \mbox{\hyperlink{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42accb41df2b4b528a8b7027cd1a792a7a0}{NO\+\_\+\+ALERT}}
+, \mbox{\hyperlink{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42aa356f97f098e2c712a24e17891d9d784}{BOX\+\_\+\+OPEN}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2}{LIGHT\+\_\+\+MANAGER\+\_\+\+STATUS}} \{ \mbox{\hyperlink{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2a038246f844762bb3b60f9f00f47eeadf}{EXPECTED}}
+, \mbox{\hyperlink{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2afb6b839a96a9da95547956098b7606ef}{UNEXPECTED}}
+, \mbox{\hyperlink{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2ab7ae5781b3d0707ad2da349a227db593}{NOT\+\_\+\+WORKING}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64af}{LIGHT\+\_\+\+MANAGER\+\_\+\+CONTROL\+\_\+\+ACTIONS}} \{ \mbox{\hyperlink{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac92617ce0ef00418103c671a6f029927}{INCREASE\+\_\+\+BRIGHT}}
+, \mbox{\hyperlink{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac5feee0d3961abf7c36d8e63c6d7abbd}{DECREASE\+\_\+\+BRIGHT}}
+, \mbox{\hyperlink{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afa03eb8be46d7469573f4ba5665b86c832}{OP\+\_\+\+MODE\+\_\+\+CHANGED}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014}{SUPPLY\+\_\+\+MANAGER\+\_\+\+STATUS}} \{ \newline
+\mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a2bc49ec37d6a5715dd23e85f1ff5bb59}{OK}}
+, \mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a04ef9c54bf8fecf6499edcc41b7281d7}{LOW\+\_\+\+POWER}}
+, \mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a742fb575c19430d06efcb377876f47d9}{OVER\+\_\+\+VOLTAGE}}
+, \mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a4548ab7d2aca8604c3e0e536957dfabc}{OVER\+\_\+\+CURRENT}}
+, \newline
+\mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a599b82e69547e6c61ae8b4e01b3c6494}{NO\+\_\+\+POWER}}
+ \}
+\item 
+enum \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bb}{POWER\+\_\+\+EVENTS}} \{ \newline
+\mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba3f0b65150069f932b7179189f87d32a3}{CLOSE\+\_\+\+RELAY}}
+, \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba472fe4b4a94050d20559b06021770ada}{RELEASE\+\_\+\+RELAY}}
+, \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba76c49c6e96f5e4489ee46d006ae7bbf8}{SUPPLY\+\_\+\+CHANGE}}
+, \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bbad3de5e64f77780083269c418b5df71f3}{MAX\+\_\+\+CURRENT\+\_\+\+THRESHOLD\+\_\+\+CHANGED}}
+, \newline
+\mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba285c4c87b6c155cfa3360633adf78c18}{MIN\+\_\+\+CURRENT\+\_\+\+THRESHOLD\+\_\+\+CHANGED}}
+, \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba1a171f406b91a585bc3f168e1ac05500}{OP\+\_\+\+MDOE\+\_\+\+CHANGED}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{smart_pole_config_8h_a5da03d43da4594a498f23801bbfe345b}\label{smart_pole_config_8h_a5da03d43da4594a498f23801bbfe345b}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!BATTERY\_SUPPLY\_RELAY@{BATTERY\_SUPPLY\_RELAY}}
+\index{BATTERY\_SUPPLY\_RELAY@{BATTERY\_SUPPLY\_RELAY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{BATTERY\_SUPPLY\_RELAY}{BATTERY\_SUPPLY\_RELAY}}
+{\footnotesize\ttfamily \#define BATTERY\+\_\+\+SUPPLY\+\_\+\+RELAY~(uint16\+\_\+t)21U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a4af7117b377b397fe74166aab85e6a9c}\label{smart_pole_config_8h_a4af7117b377b397fe74166aab85e6a9c}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!DEBUGLOG\_MODE@{DEBUGLOG\_MODE}}
+\index{DEBUGLOG\_MODE@{DEBUGLOG\_MODE}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{DEBUGLOG\_MODE}{DEBUGLOG\_MODE}}
+{\footnotesize\ttfamily \#define DEBUGLOG\+\_\+\+MODE~1}
+
+\mbox{\Hypertarget{smart_pole_config_8h_accd538ce81a64892e007f80ac354fd78}\label{smart_pole_config_8h_accd538ce81a64892e007f80ac354fd78}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!GRID\_SUPPLY\_RELAY@{GRID\_SUPPLY\_RELAY}}
+\index{GRID\_SUPPLY\_RELAY@{GRID\_SUPPLY\_RELAY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{GRID\_SUPPLY\_RELAY}{GRID\_SUPPLY\_RELAY}}
+{\footnotesize\ttfamily \#define GRID\+\_\+\+SUPPLY\+\_\+\+RELAY~(uint16\+\_\+t)22U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_ae8a1848a8abb3223190ecded8024aa7d}\label{smart_pole_config_8h_ae8a1848a8abb3223190ecded8024aa7d}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!LAMP\_PWM\_FREQUENCY@{LAMP\_PWM\_FREQUENCY}}
+\index{LAMP\_PWM\_FREQUENCY@{LAMP\_PWM\_FREQUENCY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{LAMP\_PWM\_FREQUENCY}{LAMP\_PWM\_FREQUENCY}}
+{\footnotesize\ttfamily \#define LAMP\+\_\+\+PWM\+\_\+\+FREQUENCY~30000U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_ac89cf9dbb29f3b4d23ab7ee948f7531a}\label{smart_pole_config_8h_ac89cf9dbb29f3b4d23ab7ee948f7531a}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!LAMP\_PWM\_WRAP@{LAMP\_PWM\_WRAP}}
+\index{LAMP\_PWM\_WRAP@{LAMP\_PWM\_WRAP}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{LAMP\_PWM\_WRAP}{LAMP\_PWM\_WRAP}}
+{\footnotesize\ttfamily \#define LAMP\+\_\+\+PWM\+\_\+\+WRAP~4167U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}\label{smart_pole_config_8h_a607cf3a8ccb8d668b19da367903f4a0f}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!LED\_CTRL\_PIN@{LED\_CTRL\_PIN}}
+\index{LED\_CTRL\_PIN@{LED\_CTRL\_PIN}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{LED\_CTRL\_PIN}{LED\_CTRL\_PIN}}
+{\footnotesize\ttfamily \#define LED\+\_\+\+CTRL\+\_\+\+PIN~(uint16\+\_\+t)7U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a0100203590d1f2db84211b313cae17d2}\label{smart_pole_config_8h_a0100203590d1f2db84211b313cae17d2}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MAGNETIC\_SWITCH\_PIN@{MAGNETIC\_SWITCH\_PIN}}
+\index{MAGNETIC\_SWITCH\_PIN@{MAGNETIC\_SWITCH\_PIN}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MAGNETIC\_SWITCH\_PIN}{MAGNETIC\_SWITCH\_PIN}}
+{\footnotesize\ttfamily \#define MAGNETIC\+\_\+\+SWITCH\+\_\+\+PIN~(uint16\+\_\+t)16U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a7e32bc1c0a3b69c47492d8431e71adb2}\label{smart_pole_config_8h_a7e32bc1c0a3b69c47492d8431e71adb2}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MAX\_BRIGHT\_DUTY@{MAX\_BRIGHT\_DUTY}}
+\index{MAX\_BRIGHT\_DUTY@{MAX\_BRIGHT\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRIGHT\_DUTY}{MAX\_BRIGHT\_DUTY}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+BRIGHT\+\_\+\+DUTY~99U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_aca55403974e5537d4c54143337d89d9f}\label{smart_pole_config_8h_aca55403974e5537d4c54143337d89d9f}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MAX\_BRIGHT\_EMERGENCY\_DUTY@{MAX\_BRIGHT\_EMERGENCY\_DUTY}}
+\index{MAX\_BRIGHT\_EMERGENCY\_DUTY@{MAX\_BRIGHT\_EMERGENCY\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRIGHT\_EMERGENCY\_DUTY}{MAX\_BRIGHT\_EMERGENCY\_DUTY}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+BRIGHT\+\_\+\+EMERGENCY\+\_\+\+DUTY~30U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_acd60137767be8fc28b684bf2d0aeb48f}\label{smart_pole_config_8h_acd60137767be8fc28b684bf2d0aeb48f}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY@{MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY}}
+\index{MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY@{MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY}{MAX\_BRIGHT\_ENERGY\_SAVING\_DUTY}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+BRIGHT\+\_\+\+ENERGY\+\_\+\+SAVING\+\_\+\+DUTY~60U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a412f365df935289e707186d6c4944d9b}\label{smart_pole_config_8h_a412f365df935289e707186d6c4944d9b}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MAX\_BRIGHT\_TIME@{MAX\_BRIGHT\_TIME}}
+\index{MAX\_BRIGHT\_TIME@{MAX\_BRIGHT\_TIME}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_BRIGHT\_TIME}{MAX\_BRIGHT\_TIME}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+BRIGHT\+\_\+\+TIME~(uint32\+\_\+t)10000U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a9915f733c040e4de03f214acfd1f3c8b}\label{smart_pole_config_8h_a9915f733c040e4de03f214acfd1f3c8b}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MIN\_BRIGHT\_DUTY@{MIN\_BRIGHT\_DUTY}}
+\index{MIN\_BRIGHT\_DUTY@{MIN\_BRIGHT\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_BRIGHT\_DUTY}{MIN\_BRIGHT\_DUTY}}
+{\footnotesize\ttfamily \#define MIN\+\_\+\+BRIGHT\+\_\+\+DUTY~20U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a8f18fd70bb2664c10e7590b4fadea5e0}\label{smart_pole_config_8h_a8f18fd70bb2664c10e7590b4fadea5e0}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MIN\_BRIGHT\_EMERGENCY\_DUTY@{MIN\_BRIGHT\_EMERGENCY\_DUTY}}
+\index{MIN\_BRIGHT\_EMERGENCY\_DUTY@{MIN\_BRIGHT\_EMERGENCY\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_BRIGHT\_EMERGENCY\_DUTY}{MIN\_BRIGHT\_EMERGENCY\_DUTY}}
+{\footnotesize\ttfamily \#define MIN\+\_\+\+BRIGHT\+\_\+\+EMERGENCY\+\_\+\+DUTY~30U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a8e1f5e33a0296ffd33d650dead320cdf}\label{smart_pole_config_8h_a8e1f5e33a0296ffd33d650dead320cdf}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY@{MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY}}
+\index{MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY@{MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY}{MIN\_BRIGHT\_ENERGY\_SAVING\_DUTY}}
+{\footnotesize\ttfamily \#define MIN\+\_\+\+BRIGHT\+\_\+\+ENERGY\+\_\+\+SAVING\+\_\+\+DUTY~20U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_ae73c321abdbc6abca15185bac9a71efa}\label{smart_pole_config_8h_ae73c321abdbc6abca15185bac9a71efa}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!PERIOD\_TRIGGER\_TASK@{PERIOD\_TRIGGER\_TASK}}
+\index{PERIOD\_TRIGGER\_TASK@{PERIOD\_TRIGGER\_TASK}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{PERIOD\_TRIGGER\_TASK}{PERIOD\_TRIGGER\_TASK}}
+{\footnotesize\ttfamily \#define PERIOD\+\_\+\+TRIGGER\+\_\+\+TASK~10000\+UL}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a912868efa92126901849f6bd39d14c9b}\label{smart_pole_config_8h_a912868efa92126901849f6bd39d14c9b}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!PIR\_SENSOR\_PIN@{PIR\_SENSOR\_PIN}}
+\index{PIR\_SENSOR\_PIN@{PIR\_SENSOR\_PIN}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{PIR\_SENSOR\_PIN}{PIR\_SENSOR\_PIN}}
+{\footnotesize\ttfamily \#define PIR\+\_\+\+SENSOR\+\_\+\+PIN~(uint16\+\_\+t)15U}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a7c808633c4558d3817444b4426393fac}\label{smart_pole_config_8h_a7c808633c4558d3817444b4426393fac}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!RELAY\_RELEASE\_TIME@{RELAY\_RELEASE\_TIME}}
+\index{RELAY\_RELEASE\_TIME@{RELAY\_RELEASE\_TIME}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{RELAY\_RELEASE\_TIME}{RELAY\_RELEASE\_TIME}}
+{\footnotesize\ttfamily \#define RELAY\+\_\+\+RELEASE\+\_\+\+TIME~5000\+UL}
+
+\mbox{\Hypertarget{smart_pole_config_8h_a98d9e1aeb0ef1a88921f519859d9ca43}\label{smart_pole_config_8h_a98d9e1aeb0ef1a88921f519859d9ca43}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!SOLAR\_SUPPLY\_RELAY@{SOLAR\_SUPPLY\_RELAY}}
+\index{SOLAR\_SUPPLY\_RELAY@{SOLAR\_SUPPLY\_RELAY}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{SOLAR\_SUPPLY\_RELAY}{SOLAR\_SUPPLY\_RELAY}}
+{\footnotesize\ttfamily \#define SOLAR\+\_\+\+SUPPLY\+\_\+\+RELAY~(uint16\+\_\+t)20U}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{smart_pole_config_8h_a139a8299be42806ad4cb382330cd8d2a}\label{smart_pole_config_8h_a139a8299be42806ad4cb382330cd8d2a}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!lightData@{lightData}}
+\index{lightData@{lightData}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{lightData}{lightData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structligh_data}{ligh\+Data}} \mbox{\hyperlink{smart_pole_config_8h_a139a8299be42806ad4cb382330cd8d2a}{light\+Data}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64af}\label{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64af}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!LIGHT\_MANAGER\_CONTROL\_ACTIONS@{LIGHT\_MANAGER\_CONTROL\_ACTIONS}}
+\index{LIGHT\_MANAGER\_CONTROL\_ACTIONS@{LIGHT\_MANAGER\_CONTROL\_ACTIONS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_MANAGER\_CONTROL\_ACTIONS}{LIGHT\_MANAGER\_CONTROL\_ACTIONS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64af}{LIGHT\+\_\+\+MANAGER\+\_\+\+CONTROL\+\_\+\+ACTIONS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INCREASE\_BRIGHT@{INCREASE\_BRIGHT}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!INCREASE\_BRIGHT@{INCREASE\_BRIGHT}}}\mbox{\Hypertarget{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac92617ce0ef00418103c671a6f029927}\label{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac92617ce0ef00418103c671a6f029927}} 
+INCREASE\+\_\+\+BRIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DECREASE\_BRIGHT@{DECREASE\_BRIGHT}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!DECREASE\_BRIGHT@{DECREASE\_BRIGHT}}}\mbox{\Hypertarget{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac5feee0d3961abf7c36d8e63c6d7abbd}\label{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afac5feee0d3961abf7c36d8e63c6d7abbd}} 
+DECREASE\+\_\+\+BRIGHT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OP\_MODE\_CHANGED@{OP\_MODE\_CHANGED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!OP\_MODE\_CHANGED@{OP\_MODE\_CHANGED}}}\mbox{\Hypertarget{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afa03eb8be46d7469573f4ba5665b86c832}\label{smart_pole_config_8h_a9d81c5c191e4f9a6469fbf48c6fd64afa03eb8be46d7469573f4ba5665b86c832}} 
+OP\+\_\+\+MODE\+\_\+\+CHANGED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2}\label{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!LIGHT\_MANAGER\_STATUS@{LIGHT\_MANAGER\_STATUS}}
+\index{LIGHT\_MANAGER\_STATUS@{LIGHT\_MANAGER\_STATUS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_MANAGER\_STATUS}{LIGHT\_MANAGER\_STATUS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2}{LIGHT\+\_\+\+MANAGER\+\_\+\+STATUS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPECTED@{EXPECTED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!EXPECTED@{EXPECTED}}}\mbox{\Hypertarget{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2a038246f844762bb3b60f9f00f47eeadf}\label{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2a038246f844762bb3b60f9f00f47eeadf}} 
+EXPECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNEXPECTED@{UNEXPECTED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!UNEXPECTED@{UNEXPECTED}}}\mbox{\Hypertarget{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2afb6b839a96a9da95547956098b7606ef}\label{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2afb6b839a96a9da95547956098b7606ef}} 
+UNEXPECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOT\_WORKING@{NOT\_WORKING}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!NOT\_WORKING@{NOT\_WORKING}}}\mbox{\Hypertarget{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2ab7ae5781b3d0707ad2da349a227db593}\label{smart_pole_config_8h_ab9a5caca1479c095b06f64eb0888e7b2ab7ae5781b3d0707ad2da349a227db593}} 
+NOT\+\_\+\+WORKING&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24}\label{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!OP\_MODE@{OP\_MODE}}
+\index{OP\_MODE@{OP\_MODE}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{OP\_MODE}{OP\_MODE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24}{OP\+\_\+\+MODE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NORMAL\_OPERATION@{NORMAL\_OPERATION}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!NORMAL\_OPERATION@{NORMAL\_OPERATION}}}\mbox{\Hypertarget{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24a40a71b2d40ad7ef49b7e28e422ae351e}\label{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24a40a71b2d40ad7ef49b7e28e422ae351e}} 
+NORMAL\+\_\+\+OPERATION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POWER\_SAVING@{POWER\_SAVING}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!POWER\_SAVING@{POWER\_SAVING}}}\mbox{\Hypertarget{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24aca6b876d281ae029d122953dd356b30f}\label{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24aca6b876d281ae029d122953dd356b30f}} 
+POWER\+\_\+\+SAVING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EMERGENCY\_OPERATION@{EMERGENCY\_OPERATION}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!EMERGENCY\_OPERATION@{EMERGENCY\_OPERATION}}}\mbox{\Hypertarget{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24af93f65583dbb61806be08c2ba787e74e}\label{smart_pole_config_8h_a8e4ffa5726ab4bbfea34fa9f25a15e24af93f65583dbb61806be08c2ba787e74e}} 
+EMERGENCY\+\_\+\+OPERATION&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bb}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bb}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!POWER\_EVENTS@{POWER\_EVENTS}}
+\index{POWER\_EVENTS@{POWER\_EVENTS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{POWER\_EVENTS}{POWER\_EVENTS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bb}{POWER\+\_\+\+EVENTS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOSE\_RELAY@{CLOSE\_RELAY}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!CLOSE\_RELAY@{CLOSE\_RELAY}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba3f0b65150069f932b7179189f87d32a3}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba3f0b65150069f932b7179189f87d32a3}} 
+CLOSE\+\_\+\+RELAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RELEASE\_RELAY@{RELEASE\_RELAY}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!RELEASE\_RELAY@{RELEASE\_RELAY}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba472fe4b4a94050d20559b06021770ada}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba472fe4b4a94050d20559b06021770ada}} 
+RELEASE\+\_\+\+RELAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUPPLY\_CHANGE@{SUPPLY\_CHANGE}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!SUPPLY\_CHANGE@{SUPPLY\_CHANGE}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba76c49c6e96f5e4489ee46d006ae7bbf8}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba76c49c6e96f5e4489ee46d006ae7bbf8}} 
+SUPPLY\+\_\+\+CHANGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAX\_CURRENT\_THRESHOLD\_CHANGED@{MAX\_CURRENT\_THRESHOLD\_CHANGED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!MAX\_CURRENT\_THRESHOLD\_CHANGED@{MAX\_CURRENT\_THRESHOLD\_CHANGED}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bbad3de5e64f77780083269c418b5df71f3}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bbad3de5e64f77780083269c418b5df71f3}} 
+MAX\+\_\+\+CURRENT\+\_\+\+THRESHOLD\+\_\+\+CHANGED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MIN\_CURRENT\_THRESHOLD\_CHANGED@{MIN\_CURRENT\_THRESHOLD\_CHANGED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!MIN\_CURRENT\_THRESHOLD\_CHANGED@{MIN\_CURRENT\_THRESHOLD\_CHANGED}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba285c4c87b6c155cfa3360633adf78c18}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba285c4c87b6c155cfa3360633adf78c18}} 
+MIN\+\_\+\+CURRENT\+\_\+\+THRESHOLD\+\_\+\+CHANGED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OP\_MDOE\_CHANGED@{OP\_MDOE\_CHANGED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!OP\_MDOE\_CHANGED@{OP\_MDOE\_CHANGED}}}\mbox{\Hypertarget{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba1a171f406b91a585bc3f168e1ac05500}\label{smart_pole_config_8h_af8dbd82867c2ec05a55c26f7af16e5bba1a171f406b91a585bc3f168e1ac05500}} 
+OP\+\_\+\+MDOE\+\_\+\+CHANGED&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9}\label{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!SENS\_EVENTS@{SENS\_EVENTS}}
+\index{SENS\_EVENTS@{SENS\_EVENTS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{SENS\_EVENTS}{SENS\_EVENTS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9}{SENS\+\_\+\+EVENTS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVEMENT\_DETECTED@{MOVEMENT\_DETECTED}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!MOVEMENT\_DETECTED@{MOVEMENT\_DETECTED}}}\mbox{\Hypertarget{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a2488fc64c820d6e5040ae6839a6d8506}\label{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a2488fc64c820d6e5040ae6839a6d8506}} 
+MOVEMENT\+\_\+\+DETECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_MOVEMENT@{NO\_MOVEMENT}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!NO\_MOVEMENT@{NO\_MOVEMENT}}}\mbox{\Hypertarget{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a4d56177b6a2b746f93d162e92906a800}\label{smart_pole_config_8h_ad087131346f96891b869ccd5cdef31c9a4d56177b6a2b746f93d162e92906a800}} 
+NO\+\_\+\+MOVEMENT&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!SUPPLY\_MANAGER\_STATUS@{SUPPLY\_MANAGER\_STATUS}}
+\index{SUPPLY\_MANAGER\_STATUS@{SUPPLY\_MANAGER\_STATUS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{SUPPLY\_MANAGER\_STATUS}{SUPPLY\_MANAGER\_STATUS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014}{SUPPLY\+\_\+\+MANAGER\+\_\+\+STATUS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OK@{OK}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!OK@{OK}}}\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a2bc49ec37d6a5715dd23e85f1ff5bb59}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a2bc49ec37d6a5715dd23e85f1ff5bb59}} 
+OK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LOW\_POWER@{LOW\_POWER}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!LOW\_POWER@{LOW\_POWER}}}\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a04ef9c54bf8fecf6499edcc41b7281d7}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a04ef9c54bf8fecf6499edcc41b7281d7}} 
+LOW\+\_\+\+POWER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OVER\_VOLTAGE@{OVER\_VOLTAGE}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!OVER\_VOLTAGE@{OVER\_VOLTAGE}}}\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a742fb575c19430d06efcb377876f47d9}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a742fb575c19430d06efcb377876f47d9}} 
+OVER\+\_\+\+VOLTAGE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OVER\_CURRENT@{OVER\_CURRENT}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!OVER\_CURRENT@{OVER\_CURRENT}}}\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a4548ab7d2aca8604c3e0e536957dfabc}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a4548ab7d2aca8604c3e0e536957dfabc}} 
+OVER\+\_\+\+CURRENT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_POWER@{NO\_POWER}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!NO\_POWER@{NO\_POWER}}}\mbox{\Hypertarget{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a599b82e69547e6c61ae8b4e01b3c6494}\label{smart_pole_config_8h_a6f65577807dbe65ddbecaa0f75eb5014a599b82e69547e6c61ae8b4e01b3c6494}} 
+NO\+\_\+\+POWER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42}\label{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42}} 
+\index{smartPoleConfig.h@{smartPoleConfig.h}!SYSTEM\_ALERTS@{SYSTEM\_ALERTS}}
+\index{SYSTEM\_ALERTS@{SYSTEM\_ALERTS}!smartPoleConfig.h@{smartPoleConfig.h}}
+\doxysubsubsection{\texorpdfstring{SYSTEM\_ALERTS}{SYSTEM\_ALERTS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42}{SYSTEM\+\_\+\+ALERTS}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ALERT@{NO\_ALERT}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!NO\_ALERT@{NO\_ALERT}}}\mbox{\Hypertarget{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42accb41df2b4b528a8b7027cd1a792a7a0}\label{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42accb41df2b4b528a8b7027cd1a792a7a0}} 
+NO\+\_\+\+ALERT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOX\_OPEN@{BOX\_OPEN}!smartPoleConfig.h@{smartPoleConfig.h}}\index{smartPoleConfig.h@{smartPoleConfig.h}!BOX\_OPEN@{BOX\_OPEN}}}\mbox{\Hypertarget{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42aa356f97f098e2c712a24e17891d9d784}\label{smart_pole_config_8h_a3939581878d7d30a4039375f57b9db42aa356f97f098e2c712a24e17891d9d784}} 
+BOX\+\_\+\+OPEN&\\
+\hline
+
+\end{DoxyEnumFields}

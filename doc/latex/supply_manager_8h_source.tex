@@ -1,0 +1,73 @@
+\hypertarget{supply_manager_8h_source}{}\doxysection{supply\+Manager.\+h}
+\label{supply_manager_8h_source}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.h@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.h}}
+\mbox{\hyperlink{supply_manager_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include "{}pico/stdio.h"{}}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}pico/time.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classsupply_manager}{supplyManager}}\{}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         uint8\_t currentPowerSupply;}
+\DoxyCodeLine{26         uint16\_t currentPower;}
+\DoxyCodeLine{27         uint8\_t operationMode;}
+\DoxyCodeLine{28         uint8\_t lampCurrent;}
+\DoxyCodeLine{29         uint8\_t sensorsCurrent;}
+\DoxyCodeLine{30         uint8\_t sensorsPower;}
+\DoxyCodeLine{31         uint8\_t lampPower;}
+\DoxyCodeLine{32         uint8\_t powerStatus;}
+\DoxyCodeLine{33         uint8\_t lastAction;}
+\DoxyCodeLine{34         uint8\_t suppliesVoltages[3];}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36         alarm\_id\_t switchAlert;}
+\DoxyCodeLine{37     }
+\DoxyCodeLine{38     \textcolor{keyword}{public}:}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{44         \mbox{\hyperlink{classsupply_manager_ad9edbf18fc11636a602a4b7e84c6db61}{supplyManager}}();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{52         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsupply_manager_ad487317a437e2ce83edc9c427dcbe41d}{switchRelay}}(uint8\_t switchType, uint16\_t relay2Control);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{59         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsupply_manager_a8261a960e5e96ef9884c424c0e6237aa}{setOperationMode}}(uint8\_t opMode);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{66         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_aee5c6e004af7cceb221a96aa2eb3a58d}{getOperationMode}}();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsupply_manager_ae5d6a72b6e6f2ab1c76d0e27d8a7ae7e}{powerAlert}}(uint8\_t event);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{81         \textcolor{keywordtype}{void} \mbox{\hyperlink{classsupply_manager_aac2fcfba2427412c8bd1ad63c4395c81}{changePowerSupply}}(uint16\_t supplyToDisconnect, uint16\_t supplyToConnect);}
+\DoxyCodeLine{82         }
+\DoxyCodeLine{83         \textcolor{comment}{/* Get methods */}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{90         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a74c4545226308101f563c78b93954986}{getCurrentPowerSupply}}();}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{97         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a4eea844204d67ab1febc2d07dbcae346}{getCurrentPower}}();}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{104         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a0a75e1b65d8839fbf3c4d07dd44e9384}{getLampCurrent}}();}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{111         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_af1b271f36ff15ac17d96d7c88fccaa4c}{getSensorsCurrent}}();}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{118         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_ab90cad9f78349cea236ae2a4dd19a467}{getSensorsPower}}();}
+\DoxyCodeLine{119 }
+\DoxyCodeLine{125         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a40c47ea95c330e2ed17c923930f29421}{getLampPower}}();}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{132         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a31d1a17374ae00676cd7199349a91add}{getPowerStatus}}();}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{139         \textcolor{keyword}{inline} uint8\_t \mbox{\hyperlink{classsupply_manager_a2375edccf753e828f46d2ba8f63df1da}{getLastAction}}();}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{146         \textcolor{keyword}{inline} uint8\_t* \mbox{\hyperlink{classsupply_manager_a7b890cd9337fe64ace5a41cb6780f955}{getSuppliesVoltages}}();}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{153         \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classsupply_manager_a6e903f52a0520b8c52cb61d5bb517616}{setSuppliesVoltages}}(uint8\_t* values)\{}
+\DoxyCodeLine{154             \textcolor{comment}{//TODO: FOR LOOP FOR EXTRACT THE POWER SUPPLIES VOLTAGES}}
+\DoxyCodeLine{155         \}}
+\DoxyCodeLine{156 \};}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{165 int64\_t \mbox{\hyperlink{supply_manager_8h_acea7e066d6c0ff8c7b5ac50caadf7e2b}{closeRelay}}(alarm\_id\_t \textcolor{keywordtype}{id}, \textcolor{keywordtype}{void}* relayPin);}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{169 \textcolor{keywordtype}{void} \mbox{\hyperlink{supply_manager_8h_acea7e066d6c0ff8c7b5ac50caadf7e2b}{closeRelay}}(uint16\_t relayPin);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{176 int64\_t \mbox{\hyperlink{supply_manager_8h_ab43274f8adb6cf84b06cff67a14c6a24}{releaseRelay}}(alarm\_id\_t \textcolor{keywordtype}{id}, \textcolor{keywordtype}{void}* relayPin);}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{180 \textcolor{keywordtype}{void} \mbox{\hyperlink{supply_manager_8h_ab43274f8adb6cf84b06cff67a14c6a24}{releaseRelay}}(uint16\_t relayPin);}
+
+\end{DoxyCode}

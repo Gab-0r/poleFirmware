@@ -1,0 +1,92 @@
+\hypertarget{supply_manager_8cpp}{}\doxysection{C\+:/\+Users/j\+\_\+gab/\+Documents/\+Pico/pico-\/projects/pole\+Firmware/supply\+Manager/lib/supply\+Manager.cpp File Reference}
+\label{supply_manager_8cpp}\index{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.cpp@{C:/Users/j\_gab/Documents/Pico/pico-\/projects/poleFirmware/supplyManager/lib/supplyManager.cpp}}
+{\ttfamily \#include \char`\"{}supply\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pico/stdio.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}smart\+Pole\+Config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pico/time.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int64\+\_\+t \mbox{\hyperlink{supply_manager_8cpp_aaef75c3214ef0516295f87b012878d28}{close\+Relay}} (alarm\+\_\+id\+\_\+t id, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Close a relay. This funciton need to be call from an alarm interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supply_manager_8cpp_a2c9041344c5be01d783a5901bb4d6f96}{close\+Relay}} (uint16\+\_\+t relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Close a relay. This function cannot be call from an alarm interrupt. \end{DoxyCompactList}\item 
+int64\+\_\+t \mbox{\hyperlink{supply_manager_8cpp_a75f46ac37d884fc26119c55305ab8a3c}{release\+Relay}} (alarm\+\_\+id\+\_\+t id, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Release a relay. This function need to be call from an alarm interrupt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supply_manager_8cpp_a76c8d9f78e97a10348a0a95a342a846f}{release\+Relay}} (uint16\+\_\+t relay\+Pin)
+\begin{DoxyCompactList}\small\item\em Release a relay. This function cannot be call from an alarm interrupt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{supply_manager_8cpp_aaef75c3214ef0516295f87b012878d28}\label{supply_manager_8cpp_aaef75c3214ef0516295f87b012878d28}} 
+\index{supplyManager.cpp@{supplyManager.cpp}!closeRelay@{closeRelay}}
+\index{closeRelay@{closeRelay}!supplyManager.cpp@{supplyManager.cpp}}
+\doxysubsubsection{\texorpdfstring{closeRelay()}{closeRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int64\+\_\+t close\+Relay (\begin{DoxyParamCaption}\item[{alarm\+\_\+id\+\_\+t}]{id,  }\item[{void $\ast$}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Close a relay. This funciton need to be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Alarm id \\
+\hline
+{\em relay\+Pin} & Relay pin to close \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int64\+\_\+t \texorpdfstring{$<$}{<}0 to reschedule the same alarm this many us from the time the alarm was previously sccheduled to fire, \texorpdfstring{$>$}{>}0 to reschedule the same alarm this many us from the time this method returns, 0 to not reschdeule the alarm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{supply_manager_8cpp_a2c9041344c5be01d783a5901bb4d6f96}\label{supply_manager_8cpp_a2c9041344c5be01d783a5901bb4d6f96}} 
+\index{supplyManager.cpp@{supplyManager.cpp}!closeRelay@{closeRelay}}
+\index{closeRelay@{closeRelay}!supplyManager.cpp@{supplyManager.cpp}}
+\doxysubsubsection{\texorpdfstring{closeRelay()}{closeRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void close\+Relay (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Close a relay. This function cannot be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em relay\+Pin} & Relay pin to set \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{supply_manager_8cpp_a75f46ac37d884fc26119c55305ab8a3c}\label{supply_manager_8cpp_a75f46ac37d884fc26119c55305ab8a3c}} 
+\index{supplyManager.cpp@{supplyManager.cpp}!releaseRelay@{releaseRelay}}
+\index{releaseRelay@{releaseRelay}!supplyManager.cpp@{supplyManager.cpp}}
+\doxysubsubsection{\texorpdfstring{releaseRelay()}{releaseRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int64\+\_\+t release\+Relay (\begin{DoxyParamCaption}\item[{alarm\+\_\+id\+\_\+t}]{id,  }\item[{void $\ast$}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Release a relay. This function need to be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Alarm id \\
+\hline
+{\em relay\+Pin} & Relay pin \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\texorpdfstring{$<$}{<}0 to reschedule the same alarm this many us from the time the alarm was previously sccheduled to fire, \texorpdfstring{$>$}{>}0 to reschedule the same alarm this many us from the time this method returns, 0 to not reschdeule the alarm 
+\end{DoxyReturn}
+\mbox{\Hypertarget{supply_manager_8cpp_a76c8d9f78e97a10348a0a95a342a846f}\label{supply_manager_8cpp_a76c8d9f78e97a10348a0a95a342a846f}} 
+\index{supplyManager.cpp@{supplyManager.cpp}!releaseRelay@{releaseRelay}}
+\index{releaseRelay@{releaseRelay}!supplyManager.cpp@{supplyManager.cpp}}
+\doxysubsubsection{\texorpdfstring{releaseRelay()}{releaseRelay()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void release\+Relay (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{relay\+Pin }\end{DoxyParamCaption})}
+
+
+
+Release a relay. This function cannot be call from an alarm interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em relay\+Pin} & Relay pin \\
+\hline
+\end{DoxyParams}
