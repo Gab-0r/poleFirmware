@@ -364,15 +364,19 @@ void packetManagerTask(void *pvParameters){
         #endif
 
         //Create the structures to receive the data
-        lightData_t lightData_pm;
-        xQueueReceive(xLightData, &lightData_pm, 0);
+        lightData_t lightData;
+
+        //Receive the data form queue's
+        xQueueReceive(xLightData, &lightData, 0);
 
         #if DEBUGLOG_MODE
             printf("Receiving from light queue\r\n");
             printf("Measured light: %d, Expected light: %d, Operation mode: %d, Status: %d\r\n",
-                lightData_pm.measuredLight, lightData_pm.expectedLight, lightData_pm.operationMode, lightData_pm.status  
+                lightData.measuredLight, lightData.expectedLight, lightData.operationMode, lightData.status  
             );
         #endif
+
+        //TODO: Create .JSON
 
         xEventGroupSetBits(xEventGroup, COM_MANAGER_TASK_TRIGGER);
     }
@@ -392,6 +396,7 @@ void comManagerTask(void *pvParameters){
             printf("<---- COM MANAGER TRIGGERED ---->\r\n");
         #endif
 
+        //If the task has been woken by the magnetic switch interrupt
         if(systemAlert){
             switch (systemAlert)
             {
@@ -405,6 +410,13 @@ void comManagerTask(void *pvParameters){
             default:
                 break;
             }
+
+        //TODO: Create structures to receive data
+
+        //TODO: Receive data from queue's
+
+        
+
         }
     }
 }
