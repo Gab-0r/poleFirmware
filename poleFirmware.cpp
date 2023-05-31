@@ -10,8 +10,6 @@
  * 
  */
 
-
-
 #include <FreeRTOS.h>
 #include <task.h>
 #include <stdio.h>
@@ -22,6 +20,7 @@
 #include "lightManager.h"
 #include "supplyManager.h"
 #include "smartPoleConfig.h"
+#include "queue.h"
 
 /* Bits to trigger tasks */
 #define READ_ENVIROMENT_SENSORS_TASKS_TRIGGER           (1UL << 0UL)
@@ -54,7 +53,6 @@ alarm_id_t pirAlarmId = 0;
 alarm_id_t relayRelease = 0;
 
 lightManager light_manager(LED_CTRL_PIN);
-lighData lightManagerInfo;
 
 supplyManager supply_manager;
 
@@ -74,6 +72,19 @@ void lightManagerTask(void *pvParameters);          //Task to manage the light
 void packetManagerTask(void *pvParameters);         //Task to receive the values from the other task and create the telemetry packets
 void supplyManagerTask(void *pvParameters);         //Task to manage the power supplies
 void comManagerTask(void *pvParameters);            //Tas to manage the communication module
+
+/* Queues */
+QueueHandle_t xLightData;
+QueueHandle_t xPowerData;
+
+/* Data structures for queues */
+typedef struct lightData_s{
+    uint8_t measuredLight;
+    uint8_t expectedLight;
+    uint8_t operationMode;
+    uint8_t status;
+}lightData_t;
+
 
 
 int main()
@@ -126,6 +137,10 @@ void OSinit(){
     xTaskCreate(supplyManagerTask, "SupplyManage", 1000, NULL, 2, NULL);
     xTaskCreate(packetManagerTask, "PacketManage", 1000, NULL, 2, NULL);
     xTaskCreate(comManagerTask, "COMManage", 1000, NULL, 3, NULL);
+
+    /* Create Queues */
+    xLightData = xQueueCreate(1, sizeof(lightData_t));
+
 
     /* Create event groups*/
     xEventGroup = xEventGroupCreate();
@@ -280,7 +295,24 @@ void lightManagerTask(void *pvParameters){
         default:
             break;
         }
-        
+
+        //Set the values of the light telemetry structure
+        lightData_t lightData;
+        lightData.measuredLight = light_manager.getMeasuredLight();
+        lightData.expectedLight = light_manager.getExpectedLight();
+        lightData.operationMode = light_manager.getOperationMode();
+        lightData.status = light_manager.getStatus();
+
+        //Sent telemtry into a queue
+        xQueueSendToBack(xLightData, &lightData, 0);
+
+        #if DEBUGLOG_MODE
+            printf("Sending data to light queue\r\n");
+            printf("Measured light: %d, Expected light: %d, Operation mode: %d, Status: %d\r\n",
+                lightData.measuredLight, lightData.expectedLight, lightData.operationMode, lightData.status  
+            );
+        #endif
+
         xEventGroupSetBits(xEventGroup, PACKET_MANAGER_TASK_TRIGGER1);
     }
 }
@@ -330,6 +362,18 @@ void packetManagerTask(void *pvParameters){
         #if DEBUGLOG_MODE
             printf("<---- PACKET MANAGER TRIGGERED ---->\r\n");
         #endif
+
+        //Create the structures to receive the data
+        lightData_t lightData_pm;
+        xQueueReceive(xLightData, &lightData_pm, 0);
+
+        #if DEBUGLOG_MODE
+            printf("Receiving from light queue\r\n");
+            printf("Measured light: %d, Expected light: %d, Operation mode: %d, Status: %d\r\n",
+                lightData_pm.measuredLight, lightData_pm.expectedLight, lightData_pm.operationMode, lightData_pm.status  
+            );
+        #endif
+
         xEventGroupSetBits(xEventGroup, COM_MANAGER_TASK_TRIGGER);
     }
 }

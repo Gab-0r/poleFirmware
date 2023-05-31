@@ -70,6 +70,8 @@ void lightManager::readSensorsAndUpdate(){
 
     measuredLight = getRandomNumber();
     expectedLight = measuredLight;
+    status = EXPECTED;
+    operationMode = NORMAL_OPERATION;
 }
 
 
@@ -127,20 +129,20 @@ void lightManager::initPWM(){
     #endif 
 }
 
-inline uint8_t lightManager::getMeasuredLight(){return measuredLight;}
+uint8_t lightManager::getMeasuredLight(){return measuredLight;}
 
-inline uint32_t lightManager::getExpectedLight(){return expectedLight;}
+uint8_t lightManager::getExpectedLight(){return expectedLight;}
 
-inline uint16_t lightManager::getPwmMaxBrightLevel(){return pwmMaxBrightLevel;}
+uint16_t lightManager::getPwmMaxBrightLevel(){return pwmMaxBrightLevel;}
 
-inline uint16_t lightManager::getPwmMinBrightLevel(){return pwmMinBrightLevel;}
+uint16_t lightManager::getPwmMinBrightLevel(){return pwmMinBrightLevel;}
 
-inline uint8_t lightManager::getOperationMode(){return operationMode;}
+uint8_t lightManager::getOperationMode(){return operationMode;}
 
-inline uint8_t lightManager::getLastAction(){return lastAction;}
+uint8_t lightManager::getLastAction(){return lastAction;}
 
-inline uint8_t lightManager::getStatus(){return status;}
+uint8_t lightManager::getStatus(){return status;}
 
-inline void lightManager::setMaxBrightLevel(uint16_t value){pwmMaxBrightLevel = value;}
+void lightManager::setMaxBrightLevel(uint16_t value){pwmMaxBrightLevel = value;}
 
-inline void lightManager::setMinBrightLevel(uint16_t value){pwmMinBrightLevel = value;}
+void lightManager::setMinBrightLevel(uint16_t value){pwmMinBrightLevel = value;}

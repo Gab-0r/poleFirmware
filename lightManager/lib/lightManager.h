@@ -32,7 +32,7 @@ class lightManager{
          * @brief Light level expected for the current PWM duty cycle
          * 
          */
-        uint32_t expectedLight;
+        uint8_t expectedLight;
 
         /**
          * @brief Pin for the lamp PWM control signal
@@ -132,49 +132,49 @@ class lightManager{
          * 
          * @return uint8_t 
          */
-        inline uint8_t getMeasuredLight();
+        uint8_t getMeasuredLight();
 
         /**
          * @brief Get the Expected Light value
          * 
-         * @return uint32_t 
+         * @return uint8_t 
          */
-        inline uint32_t getExpectedLight();
+        uint8_t getExpectedLight();
 
         /**
          * @brief Get the Pwm Max Bright Level value
          * 
          * @return uint16_t 
          */
-        inline uint16_t getPwmMaxBrightLevel();
+        uint16_t getPwmMaxBrightLevel();
 
         /**
          * @brief Get the Pwm Min Bright Level value
          * 
          * @return uint16_t 
          */
-        inline uint16_t getPwmMinBrightLevel();
+        uint16_t getPwmMinBrightLevel();
 
         /**
          * @brief Get the Operation Mode value
          * 
          * @return uint8_t 
          */
-        inline uint8_t getOperationMode();
+        uint8_t getOperationMode();
 
         /**
          * @brief Get the Last Action value
          * 
          * @return uint8_t 
          */
-        inline uint8_t getLastAction();
+        uint8_t getLastAction();
 
         /**
          * @brief Get the Status value
          * 
          * @return uint8_t 
          */
-        inline uint8_t getStatus();
+        uint8_t getStatus();
 
         /* Set methods */
 

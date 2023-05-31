@@ -101,10 +101,3 @@ enum POWER_EVENTS{
 /*                    STRUCTS                      */
 /***************************************************/
 
-typedef struct lighData
-{
-    uint16_t lightLevels[2];
-    uint8_t currentBright;
-    uint8_t lastAction;
-    uint8_t status;
-}lightData;
