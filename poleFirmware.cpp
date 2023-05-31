@@ -21,6 +21,9 @@
 #include "supplyManager.h"
 #include "smartPoleConfig.h"
 #include "queue.h"
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
 
 /* Bits to trigger tasks */
 #define READ_ENVIROMENT_SENSORS_TASKS_TRIGGER           (1UL << 0UL)
@@ -85,7 +88,7 @@ typedef struct lightData_s{
     uint8_t status;
 }lightData_t;
 
-
+using namespace rapidjson;
 
 int main()
 {
@@ -377,6 +380,18 @@ void packetManagerTask(void *pvParameters){
         #endif
 
         //TODO: Create .JSON
+        
+        //JSON string
+        const char *json = "{\"Nombre\":\"Juan Gabriel\", \"Apellido\":\"Orozco Orozco\", \"Edad\":\"23\"}";
+        //Parsing the JSON string into DOM
+        Document DOM;
+        DOM.Parse(json);
+        //Stringifiying the DOM
+        StringBuffer buffer;
+        Writer<StringBuffer> writer(buffer);
+        DOM.Accept(writer);
+        const char *testString = buffer.GetString();
+        printf("Json content: %s\r\n", testString);
 
         xEventGroupSetBits(xEventGroup, COM_MANAGER_TASK_TRIGGER);
     }
