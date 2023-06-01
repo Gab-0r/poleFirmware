@@ -381,18 +381,31 @@ void packetManagerTask(void *pvParameters){
 
         //TODO: Create .JSON
         
+        
+        ///const char *json = "{\"Nombre\":\"Juan Gabriel\", \"Apellido\":\"Orozco Orozco\", \"Edad\":\"23\"}";
+        //No sirve la creación del string con datos dinamicos
+        char stringAux[100];
+        snprintf(stringAux, sizeof(stringAux),"{\"MeasuredLight\":\"%d\", \"ExpectedLight:\"%d\", \"LampOpMode\":\"%d\", \"LampBehavior\":\"%d\"}",
+            lightData.measuredLight, lightData.expectedLight, lightData.operationMode, lightData.status
+        );
+        printf(stringAux);
         //JSON string
-        const char *json = "{\"Nombre\":\"Juan Gabriel\", \"Apellido\":\"Orozco Orozco\", \"Edad\":\"23\"}";
+        char *json = stringAux;
+
         //Parsing the JSON string into DOM
         Document DOM;
         DOM.Parse(json);
+
         //Stringifiying the DOM
         StringBuffer buffer;
         Writer<StringBuffer> writer(buffer);
         DOM.Accept(writer);
-        const char *testString = buffer.GetString();
-        printf("Json content: %s\r\n", testString);
 
+        #if DEBUGLOG_MODE
+            const char *testString = buffer.GetString();
+            printf("Json content: %s\r\n", testString);
+        #endif
+        
         xEventGroupSetBits(xEventGroup, COM_MANAGER_TASK_TRIGGER);
     }
 }
