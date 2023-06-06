@@ -381,10 +381,11 @@ void packetManagerTask(void *pvParameters){
         #endif
 
        //Creating empty string for json file
-       char *json = "";
+       const char *json = "";
        //Creating 
        char str1[100];
 
+       //Si se pasa a una sola linea el string formateado no funciona. Dejar así
        sprintf(str1,"{\"measuredLight\":\"%d\", \"expectedLight\":\"%d\", \"operationMode\":\"%d\", \"status\":\"%d\"}",
             lightData.measuredLight, lightData.expectedLight, lightData.operationMode, lightData.status
        );
