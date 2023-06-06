@@ -194,6 +194,7 @@ void periodicTriggerTask(void *pvParameters){
     {
         vTaskDelay(xDelayTrigger);
         #if DEBUGLOG_MODE
+            printf("\r\n");
             printf("<---- LAUNCHING MEASUREMENT STAGE ---->\r\n");
         #endif
         xEventGroupSetBits(xEventGroup, READ_ENVIROMENT_SENSORS_TASKS_TRIGGER);
@@ -379,18 +380,17 @@ void packetManagerTask(void *pvParameters){
             );
         #endif
 
-        //TODO: Create .JSON
-        
-        
-        ///const char *json = "{\"Nombre\":\"Juan Gabriel\", \"Apellido\":\"Orozco Orozco\", \"Edad\":\"23\"}";
-        //No sirve la creación del string con datos dinamicos
-        char stringAux[100];
-        snprintf(stringAux, sizeof(stringAux),"{\"MeasuredLight\":\"%d\", \"ExpectedLight:\"%d\", \"LampOpMode\":\"%d\", \"LampBehavior\":\"%d\"}",
+       //Creating empty string for json file
+       char *json = "";
+       //Creating 
+       char str1[100];
+
+       sprintf(str1,"{\"measuredLight\":\"%d\", \"expectedLight\":\"%d\", \"operationMode\":\"%d\", \"status\":\"%d\"}",
             lightData.measuredLight, lightData.expectedLight, lightData.operationMode, lightData.status
-        );
-        printf(stringAux);
-        //JSON string
-        char *json = stringAux;
+       );
+
+       json = str1;
+
 
         //Parsing the JSON string into DOM
         Document DOM;
